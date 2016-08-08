@@ -8,8 +8,8 @@
     <ProjectGuid>{F1B5009B-DDEB-4503-B98E-0474E61B6E71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PMS.Xamarin.DAL.Model</RootNamespace>
-    <AssemblyName>PMS.Xamarin.DAL.Model</AssemblyName>
+    <RootNamespace>PMS.Xam.DAL.Model</RootNamespace>
+    <AssemblyName>PMS.Xam.DAL.Model</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

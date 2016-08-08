@@ -8,8 +8,8 @@
     <ProjectGuid>{8D155DF6-55A3-4956-8E40-B6DA7D2F8994}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PMS.Xamarin.DAL</RootNamespace>
-    <AssemblyName>PMS.Xamarin.DAL</AssemblyName>
+    <RootNamespace>PMS.Xam.DAL</RootNamespace>
+    <AssemblyName>PMS.Xam.DAL</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -62,6 +62,10 @@
     <ProjectReference Include="..\PMS.Xamarin.DAL.Model\PMS.Xam.DAL.Model.csproj">
       <Project>{f1b5009b-ddeb-4503-b98e-0474e61b6e71}</Project>
       <Name>PMS.Xam.DAL.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.Xamarin.Model.Interfaces\PMS.Xam.Model.Interfaces.csproj">
+      <Project>{053a721f-4da7-48d6-b61b-3f45ebeed527}</Project>
+      <Name>PMS.Xam.Model.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

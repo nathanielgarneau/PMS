@@ -8,8 +8,8 @@
     <ProjectGuid>{C732FF01-F55A-4F58-9B6C-3EF262923D07}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PMS.Xamarin.DAL.Repositories</RootNamespace>
-    <AssemblyName>PMS.Xamarin.DAL.Repositories</AssemblyName>
+    <RootNamespace>PMS.Xam.DAL.Repositories</RootNamespace>
+    <AssemblyName>PMS.Xam.DAL.Repositories</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

@@ -8,8 +8,8 @@
     <ProjectGuid>{59BDE92F-18C4-4010-982A-5598B7E55B56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PMS.Xamarin.UI</RootNamespace>
-    <AssemblyName>PMS.Xamarin.UI</AssemblyName>
+    <RootNamespace>PMS.Xam.UI</RootNamespace>
+    <AssemblyName>PMS.Xam.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -47,6 +47,12 @@
     </Compile>
     <Compile Include="ContentPages\Maintenance\ColourPage.xaml.cs">
       <DependentUpon>ColourPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\Colour\ColourDelete.xaml.cs">
+      <DependentUpon>ColourDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\Colour\ColourEdit.xaml.cs">
+      <DependentUpon>ColourEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="ContentPages\Maintenance\ConditionPage.xaml.cs">
       <DependentUpon>ConditionPage.xaml</DependentUpon>
@@ -281,7 +287,6 @@
     <Folder Include="ContentPages\Maintenance\Address\" />
     <Folder Include="ContentPages\Maintenance\City\" />
     <Folder Include="ContentPages\Maintenance\Client\" />
-    <Folder Include="ContentPages\Maintenance\Colour\" />
     <Folder Include="ContentPages\Maintenance\Condition\" />
     <Folder Include="ContentPages\Maintenance\Country\" />
     <Folder Include="ContentPages\Maintenance\Facility\" />
@@ -300,6 +305,18 @@
     <Folder Include="ContentPages\Maintenance\Tag\" />
     <Folder Include="ContentPages\Maintenance\UserSetting\" />
     <Folder Include="ContentPages\Maintenance\User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\Colour\ColourEdit.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\Colour\ColourDelete.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

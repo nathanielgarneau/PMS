@@ -8,8 +8,8 @@
     <ProjectGuid>{053A721F-4DA7-48D6-B61B-3F45EBEED527}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PMS.Xamarin.Model.Interfaces</RootNamespace>
-    <AssemblyName>PMS.Xamarin.Model.Interfaces</AssemblyName>
+    <RootNamespace>PMS.Xam.Model.Interfaces</RootNamespace>
+    <AssemblyName>PMS.Xam.Model.Interfaces</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

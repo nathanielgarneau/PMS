@@ -8,8 +8,8 @@
     <ProjectGuid>{3798999B-6E21-4B6B-9A53-33CE73353FCF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PMS.Xamarin.BLL</RootNamespace>
-    <AssemblyName>PMS.Xamarin.BLL</AssemblyName>
+    <RootNamespace>PMS.Xam.BLL</RootNamespace>
+    <AssemblyName>PMS.Xam.BLL</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

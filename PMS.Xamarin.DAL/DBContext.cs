@@ -15,7 +15,6 @@ namespace PMS.Xam.DAL
         private static SQLiteConnection Configure()
         {
             var  context = new SQLiteConnection(databasePath: "repository.db");
-            context.CreateTable<Setting>();
             Seed.InitialSeed(context);
             return context;
         }
