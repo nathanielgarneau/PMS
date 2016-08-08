@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{59BDE92F-18C4-4010-982A-5598B7E55B56}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PMS.Xamarin.UI</RootNamespace>
+    <AssemblyName>PMS.Xamarin.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Authenticator.cs" />
+    <Compile Include="ContentPages\MainPage.cs" />
+    <Compile Include="ContentPages\MaintenancePage.cs" />
+    <Compile Include="ContentPages\Maintenance\CityPage.xaml.cs">
+      <DependentUpon>CityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\ClientPage.xaml.cs">
+      <DependentUpon>ClientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\ColourPage.xaml.cs">
+      <DependentUpon>ColourPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\ConditionPage.xaml.cs">
+      <DependentUpon>ConditionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\CountryPage.xaml.cs">
+      <DependentUpon>CountryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\FacilityPage.xaml.cs">
+      <DependentUpon>FacilityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\IdentificationTypePage.xaml.cs">
+      <DependentUpon>IdentificationTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\LocationPage.xaml.cs">
+      <DependentUpon>LocationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\NotePage.xaml.cs">
+      <DependentUpon>NotePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\PawnPage.xaml.cs">
+      <DependentUpon>PawnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\PaymentPage.xaml.cs">
+      <DependentUpon>PaymentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\PaymentTypePage.xaml.cs">
+      <DependentUpon>PaymentTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\ProductPage.xaml.cs">
+      <DependentUpon>ProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\ProductTypePage.xaml.cs">
+      <DependentUpon>ProductTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\ProvincePage.xaml.cs">
+      <DependentUpon>ProvincePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\PurchasePage.xaml.cs">
+      <DependentUpon>PurchasePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\RatePage.xaml.cs">
+      <DependentUpon>RatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\TagPage.xaml.cs">
+      <DependentUpon>TagPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Maintenance\UserSettingsPage.xaml.cs">
+      <DependentUpon>UserSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\PawnPage.cs" />
+    <Compile Include="ContentPages\PurchasePage.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="NotificationPayload.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.0.107\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.0.107\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.0.107\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GettingStarted.Xamarin" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PMS.Xamarin.BLL\PMS.Xam.BLL.csproj">
+      <Project>{3798999b-6e21-4b6b-9a53-33ce73353fcf}</Project>
+      <Name>PMS.Xam.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMS.Xamarin.DAL.Model\PMS.Xam.DAL.Model.csproj">
+      <Project>{f1b5009b-ddeb-4503-b98e-0474e61b6e71}</Project>
+      <Name>PMS.Xam.DAL.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMS.Xamarin.Model.Interfaces\PMS.Xam.Model.Interfaces.csproj">
+      <Project>{053a721f-4da7-48d6-b61b-3f45ebeed527}</Project>
+      <Name>PMS.Xam.Model.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMS.Xamarin.ViewModel\PMS.Xam.ViewModel.csproj">
+      <Project>{E82CF697-ECFF-4DE8-9266-59CF8017E88F}</Project>
+      <Name>PMS.Xam.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\UserPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\UserSettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\TagPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\SettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\RatePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\PurchasePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\ProvincePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\ProductPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\ProductTypePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\PaymentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\PaymentTypePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\PawnPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\NotePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\LocationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\IdentificationTypePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\FacilityPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\CountryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\ConditionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\ColourPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\ClientPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentPages\Maintenance\CityPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ContentPages\Login\" />
+    <Folder Include="ContentPages\Maintenance\Address\" />
+    <Folder Include="ContentPages\Maintenance\City\" />
+    <Folder Include="ContentPages\Maintenance\Client\" />
+    <Folder Include="ContentPages\Maintenance\Colour\" />
+    <Folder Include="ContentPages\Maintenance\Condition\" />
+    <Folder Include="ContentPages\Maintenance\Country\" />
+    <Folder Include="ContentPages\Maintenance\Facility\" />
+    <Folder Include="ContentPages\Maintenance\IdentificationType\" />
+    <Folder Include="ContentPages\Maintenance\Location\" />
+    <Folder Include="ContentPages\Maintenance\Note\" />
+    <Folder Include="ContentPages\Maintenance\Pawn\" />
+    <Folder Include="ContentPages\Maintenance\PaymentType\" />
+    <Folder Include="ContentPages\Maintenance\Payment\" />
+    <Folder Include="ContentPages\Maintenance\ProductType\" />
+    <Folder Include="ContentPages\Maintenance\Product\" />
+    <Folder Include="ContentPages\Maintenance\Province\" />
+    <Folder Include="ContentPages\Maintenance\Purchase\" />
+    <Folder Include="ContentPages\Maintenance\Rate\" />
+    <Folder Include="ContentPages\Maintenance\Setting\" />
+    <Folder Include="ContentPages\Maintenance\Tag\" />
+    <Folder Include="ContentPages\Maintenance\UserSetting\" />
+    <Folder Include="ContentPages\Maintenance\User\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3798999B-6E21-4B6B-9A53-33CE73353FCF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PMS.Xamarin.BLL</RootNamespace>
+    <AssemblyName>PMS.Xamarin.BLL</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\PMS.Xamarin.DAL.Model\PMS.Xam.DAL.Model.csproj">
+      <Project>{f1b5009b-ddeb-4503-b98e-0474e61b6e71}</Project>
+      <Name>PMS.Xam.DAL.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.Xamarin.DAL.Repositories\PMS.Xam.DAL.Repositories.csproj">
+      <Project>{c732ff01-f55a-4f58-9b6c-3ef262923d07}</Project>
+      <Name>PMS.Xam.DAL.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.Xamarin.Model.Interfaces\PMS.Xam.Model.Interfaces.csproj">
+      <Project>{053a721f-4da7-48d6-b61b-3f45ebeed527}</Project>
+      <Name>PMS.Xam.Model.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.Xamarin.ViewModel\PMS.Xam.ViewModel.csproj">
+      <Project>{e82cf697-ecff-4de8-9266-59cf8017e88f}</Project>
+      <Name>PMS.Xam.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="BusinessLayer.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Colour.cs" />
+    <Compile Include="Condition.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="Facility.cs" />
+    <Compile Include="GenericBusinessLayer.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="IdentificationType.cs" />
+    <Compile Include="Interfaces\IBusinessLayer.cs" />
+    <Compile Include="Interfaces\IViewModelConvertToDalModel.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Note.cs" />
+    <Compile Include="Pawn.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Payment.cs" />
+    <Compile Include="ProductType.cs" />
+    <Compile Include="Tag.cs" />
+    <Compile Include="Setting.cs" />
+    <Compile Include="Rate.cs" />
+    <Compile Include="Purchase.cs" />
+    <Compile Include="Province.cs" />
+    <Compile Include="PaymentType.cs" />
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Product.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
