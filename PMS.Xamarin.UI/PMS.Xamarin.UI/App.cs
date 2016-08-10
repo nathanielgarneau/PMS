@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PMS.Xam.UI.ContentPages.Login;
+using PMS.Xam.UI.ContentPages;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI
@@ -13,15 +13,11 @@ namespace PMS.Xam.UI
         public static bool IsUserLoggedIn { get; private set; }
         public App()
         {
-           if (!IsUserLoggedIn)
-           {
-             //  MainPage = new NavigationPage(new LoginPage());
-           }
-           else
-           {
-               MainPage = new NavigationPage(new MainPage());
-           }
-            
+           
+            //MainPage
+            //     = new NavigationPage(new ContentPages.Maintenance.ColourPage());//Working navigation example. Delete and edit and listview screens are done with mock data.
+              MainPage
+                 = new NavigationPage(new MainPage());
             //// The root page of your application
             //MainPage = new ContentPage
             //{
@@ -37,7 +33,7 @@ namespace PMS.Xam.UI
             //    }
             //};
         }
-
+       
         protected override void OnStart()
         {
             // Handle when your app starts

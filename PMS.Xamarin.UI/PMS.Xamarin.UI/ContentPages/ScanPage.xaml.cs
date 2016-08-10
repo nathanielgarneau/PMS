@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace PMS.Xam.UI.ContentPages.Maintenance
+namespace PMS.Xam.UI.ContentPages
 {
-    public partial class ClientPage : ContentPage
+    public partial class ScanPage : ContentPage
     {
-        public ClientPage()
+        public ScanPage()
         {
             InitializeComponent();
-             Title = "Client";
+             Title = "Scan";
         }
     }
 }

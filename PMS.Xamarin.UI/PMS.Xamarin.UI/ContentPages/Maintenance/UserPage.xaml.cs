@@ -12,7 +12,7 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
     {
         public UserPage()
         {
-            InitializeComponent();
+            InitializeComponent(); Title = "User";
         }
     }
 }

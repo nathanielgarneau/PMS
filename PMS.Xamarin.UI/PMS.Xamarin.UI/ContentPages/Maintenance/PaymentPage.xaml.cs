@@ -13,6 +13,7 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         public PaymentPage()
         {
             InitializeComponent();
+             Title = "Payment";
         }
     }
 }

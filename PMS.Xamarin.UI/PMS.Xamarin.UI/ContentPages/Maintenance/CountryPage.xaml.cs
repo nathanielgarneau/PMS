@@ -13,6 +13,7 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         public CountryPage()
         {
             InitializeComponent();
+             Title = "Country";
         }
     }
 }

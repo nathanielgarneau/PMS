@@ -13,6 +13,7 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         public IdentificationTypePage()
         {
             InitializeComponent();
+             Title = "Identification Type";
         }
     }
 }

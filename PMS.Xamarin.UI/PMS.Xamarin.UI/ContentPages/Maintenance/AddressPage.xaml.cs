@@ -8,12 +8,12 @@ using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
 {
-    public partial class ClientPage : ContentPage
+    public partial class AddressPage : ContentPage
     {
-        public ClientPage()
+        public AddressPage()
         {
             InitializeComponent();
-             Title = "Client";
+             Title = "Address";
         }
     }
 }

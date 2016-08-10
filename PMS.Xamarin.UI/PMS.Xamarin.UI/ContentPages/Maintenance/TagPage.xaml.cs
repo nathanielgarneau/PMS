@@ -12,7 +12,7 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
     {
         public TagPage()
         {
-            InitializeComponent();
+            InitializeComponent(); Title = "Tag";
         }
     }
 }
