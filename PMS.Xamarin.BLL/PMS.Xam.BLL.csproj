@@ -39,10 +39,6 @@
       <Project>{f1b5009b-ddeb-4503-b98e-0474e61b6e71}</Project>
       <Name>PMS.Xam.DAL.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PMS.Xamarin.DAL.Repositories\PMS.Xam.DAL.Repositories.csproj">
-      <Project>{c732ff01-f55a-4f58-9b6c-3ef262923d07}</Project>
-      <Name>PMS.Xam.DAL.Repositories</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PMS.Xamarin.Model.Interfaces\PMS.Xam.Model.Interfaces.csproj">
       <Project>{053a721f-4da7-48d6-b61b-3f45ebeed527}</Project>
       <Name>PMS.Xam.Model.Interfaces</Name>

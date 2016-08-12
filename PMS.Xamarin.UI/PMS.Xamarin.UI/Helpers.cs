@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 using System.Net;
 
 namespace PMS.Xam.UI

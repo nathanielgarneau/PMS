@@ -25,7 +25,7 @@ namespace PMS.Xam.UI.ContentPages
         private const string Payment = "Payment";
         private const string PaymentType = "Payment Type";
         private const string Product ="Product";
-        private const string ProductType = "ProductType";
+        private const string ProductType = "Product Type";
         private const string Province = "Province";
         private const string Purchase = "Purchase";
         private const string Rate = "Rate";

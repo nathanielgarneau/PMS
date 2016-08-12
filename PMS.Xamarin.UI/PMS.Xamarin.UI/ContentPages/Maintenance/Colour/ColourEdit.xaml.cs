@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PMS.Xam.BLL;
 using PMS.Xam.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -12,7 +11,7 @@ namespace PMS.Xam.UI.ContentPages.Maintenance.Colour
 {
     public partial class ColourEdit : ContentPage
     {
-        private BusinessLayer BusinessLayer = new BusinessLayer();
+        //private BusinessLayer BusinessLayer = new BusinessLayer();
         private Picker _picker = new Picker();
 
         private BoxView _boxView = new BoxView()

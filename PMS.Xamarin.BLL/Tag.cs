@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.BLL.Interfaces;
-using PMS.Xam.DAL.Model;
-using PMS.Xam.DAL.Repositories;
+
 using PMS.Xam.ViewModel;
 
 namespace PMS.Xam.BLL

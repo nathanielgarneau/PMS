@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 using PMS.Xam.ViewModel;
 using Xamarin.Forms;
 
@@ -16,7 +16,7 @@ namespace PMS.Xam.UI
  	public class Settings
 	{
 		static Settings _instance;
-        static BLL.Setting BllSetting = new PMS.Xam.BLL.Setting();
+       // static BLL.Setting BllSetting = new PMS.Xam.BLL.Setting();
  	    private List<SettingViewModel> Values { get; set; }
 		public static Settings Instance
 		{
@@ -50,7 +50,7 @@ namespace PMS.Xam.UI
 			{
 			//	if(App.CurrentUser != null)
 			//		DeviceToken = App.CurrentUser.DeviceToken;
-				var json = JsonConvert.SerializeObject(this);
+				//var json = JsonConvert.SerializeObject(this);
 				//using(var sw = new StreamWriter(_filePath, false))
 				//{
 				//	sw.Write(json);
@@ -62,8 +62,8 @@ namespace PMS.Xam.UI
 		public static Settings Load()
 		{
             var settings = new Settings();
-		    List<SettingViewModel> values = BllSetting.GetAll().ToList();
-		    settings.Values = values;
+		    //List<SettingViewModel> values = BllSetting.GetAll().ToList();
+		    //settings.Values = values;
 			return settings;
 		}
 	}

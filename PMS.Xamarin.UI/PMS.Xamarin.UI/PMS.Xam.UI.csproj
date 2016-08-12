@@ -166,9 +166,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PMS.Xamarin.BLL\PMS.Xam.BLL.csproj">
-      <Project>{3798999b-6e21-4b6b-9a53-33ce73353fcf}</Project>
-      <Name>PMS.Xam.BLL</Name>
+    <ProjectReference Include="..\..\PMS.Xam.WebApiClient\PMS.Xam.WebApiClient.csproj">
+      <Project>{9dd2aa2b-f719-4dc8-b91f-52574c07cd39}</Project>
+      <Name>PMS.Xam.WebApiClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PMS.Xamarin.DAL.Model\PMS.Xam.DAL.Model.csproj">
       <Project>{f1b5009b-ddeb-4503-b98e-0474e61b6e71}</Project>

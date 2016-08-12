@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PMS.DAL.Model.Interfaces;
+using PMS.Xam.Model.Interfaces;
 
 namespace PMS.BLL.Interfaces
 {

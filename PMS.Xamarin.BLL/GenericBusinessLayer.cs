@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using PMS.Xam.BLL.Interfaces;
-using PMS.Xam.DAL.Repositories.Interfaces;
 using PMS.Xam.Model.Interfaces;
 // ReSharper disable SuggestVarOrType_Elsewhere
 // ReSharper disable SuggestVarOrType_SimpleTypes
