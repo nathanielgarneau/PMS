@@ -1,12 +1,14 @@
-﻿using PMS.DAL.Repositories;
+﻿using System.Collections.Generic;
+using System.Linq;
+using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
 
 namespace PMS.BLL
 {
-    public class Condition :GenericBusinessLayer<Xam.DAL.Model.Condition, ConditionViewModel> 
+    public class Condition : GenericBusinessLayer<Xam.DAL.Model.Condition, ConditionViewModel>
     {
-         public Condition()
+        public Condition()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.Condition>();
         }
@@ -34,6 +36,14 @@ namespace PMS.BLL
                 Id = model.Id,
                 Name = model.Name
             };
+        }
+        internal static ICollection<ConditionViewModel> ToViewModel(ICollection<Xam.DAL.Model.Condition> models)
+        {
+            return models.Select(model => ToViewModel(model)).ToList();
+        }
+        internal static ICollection<Xam.DAL.Model.Condition> ToDal(ICollection<ConditionViewModel> models)
+        {
+            return models.Select(model => ToDal(model)).ToList();
         }
     }
 }

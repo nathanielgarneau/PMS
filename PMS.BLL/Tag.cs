@@ -39,11 +39,11 @@ namespace PMS.BLL
             };
         }
 
-        internal static IEnumerable<TagViewModel> ToViewModel(IEnumerable<Xam.DAL.Model.Tag> models)
+        internal static ICollection<TagViewModel> ToViewModel(ICollection<Xam.DAL.Model.Tag> models)
         {
            return models.Select(model => ToViewModel(model)).ToList();
         }
-         internal static IEnumerable<Xam.DAL.Model.Tag> ToDal(IEnumerable<TagViewModel> models)
+         internal static ICollection<Xam.DAL.Model.Tag> ToDal(ICollection<TagViewModel> models)
         {
            return models.Select(model => ToDal(model)).ToList();
         }

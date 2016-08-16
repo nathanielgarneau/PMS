@@ -15,11 +15,11 @@ namespace PMS.Xam.ViewModel
         public ProductTypeViewModel ProductType { get; set; }
 
         public int Year { get; set; }
-        public ConditionViewModel Condition { get; set; }
+        public ICollection<ConditionViewModel> Conditions { get; set; }
 
         public ColourViewModel Colour { get; set; }
 
-        public IEnumerable<TagViewModel> Tags { get; set; }
+        public ICollection<TagViewModel> Tags { get; set; }
 
 
     }

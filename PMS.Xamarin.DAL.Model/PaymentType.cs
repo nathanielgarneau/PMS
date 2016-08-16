@@ -6,7 +6,7 @@ namespace PMS.Xam.DAL.Model
     public class PaymentType:IEntity<int>,IDisposable
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
             #region IDispose Region
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

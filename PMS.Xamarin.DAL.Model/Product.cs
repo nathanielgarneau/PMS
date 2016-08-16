@@ -16,11 +16,11 @@ namespace PMS.Xam.DAL.Model
         public ProductType ProductType { get; set; }
 
         public int Year { get; set; }
-        public Condition Condition { get; set; }
+        public ICollection<Condition> Conditions { get; set; }
 
         public Colour Colour { get; set; }
 
-        public IEnumerable<Tag> Tags { get; set; }
+        public ICollection<Tag> Tags { get; set; }
 
             #region IDispose Region
         private bool disposed = false;

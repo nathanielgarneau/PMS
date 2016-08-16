@@ -3,11 +3,12 @@ using PMS.Xam.Model.Interfaces;
 
 namespace PMS.Xam.DAL.Model
 {
-    public class UserSettings : IEntity<int>, IDisposable
+    public class UserSetting : IEntity<int>, IDisposable
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
+        public User User { get; set; }
         #region IDispose Region
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

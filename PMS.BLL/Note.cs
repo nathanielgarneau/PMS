@@ -37,11 +37,11 @@ namespace PMS.BLL
                 Value = model.Value
             };
         }
-         public static IEnumerable<NoteViewModel> ToViewModel(IEnumerable<Xam.DAL.Model.Note> models)
+         public static ICollection<NoteViewModel> ToViewModel(ICollection<Xam.DAL.Model.Note> models)
            {
                return models.Select(model => ToViewModel(model)).ToList();
            }
-         public static IEnumerable<Xam.DAL.Model.Note> ToDal(IEnumerable<NoteViewModel> models)
+         public static ICollection<Xam.DAL.Model.Note> ToDal(ICollection<NoteViewModel> models)
            {
                return models.Select(model => ToDal(model)).ToList();
            }

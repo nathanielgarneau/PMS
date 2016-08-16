@@ -29,7 +29,8 @@ namespace PMS.BLL
                 LastName = viewModel.LastName,
                 IdentificationType = IdentificationType.ToDal(viewModel.IdentificationType),
                 LicenseNumber = viewModel.LicenseNumber,
-                OtherIdentificationNumber = viewModel.OtherIdentificationNumber
+                OtherIdentificationNumber = viewModel.OtherIdentificationNumber,
+                OtherIdentificationType = IdentificationType.ToDal(viewModel.OtherIdentificationType)
             };
         }
         public static ClientViewModel ToViewModel(Xam.DAL.Model.Client model)
@@ -42,7 +43,8 @@ namespace PMS.BLL
                 LastName = model.LastName,
                 IdentificationType = IdentificationType.ToViewModel(model.IdentificationType),
                 LicenseNumber = model.LicenseNumber,
-                OtherIdentificationNumber = model.OtherIdentificationNumber
+                OtherIdentificationNumber = model.OtherIdentificationNumber,
+                OtherIdentificationType = IdentificationType.ToViewModel(model.OtherIdentificationType)
             };
         }
     }

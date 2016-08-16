@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.Xam.DAL.Model
@@ -11,7 +12,7 @@ namespace PMS.Xam.DAL.Model
         public int Pin { get; set; }
         public string Password { get; set; }
 
-        public UserSettings UserSettings
+        public ICollection<UserSetting> UserSettings
         {
             get;
             set;

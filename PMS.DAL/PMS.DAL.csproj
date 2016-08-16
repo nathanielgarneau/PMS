@@ -54,7 +54,35 @@
   <ItemGroup>
     <Compile Include="CodeFirstModel.cs" />
     <Compile Include="DBContext.cs" />
+    <Compile Include="Interfaces\ISeed.cs" />
+    <Compile Include="Migrations\201608151948080_v0.cs" />
+    <Compile Include="Migrations\201608151948080_v0.Designer.cs">
+      <DependentUpon>201608151948080_v0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seeds\Address.cs" />
+    <Compile Include="Seeds\City.cs" />
+    <Compile Include="Seeds\Client.cs" />
+    <Compile Include="Seeds\Colour.cs" />
+    <Compile Include="Seeds\Condition.cs" />
+    <Compile Include="Seeds\Country.cs" />
+    <Compile Include="Seeds\Facility.cs" />
+    <Compile Include="Seeds\IdentificationType.cs" />
+    <Compile Include="Seeds\Location.cs" />
+    <Compile Include="Seeds\Note.cs" />
+    <Compile Include="Seeds\Pawn.cs" />
+    <Compile Include="Seeds\Payment.cs" />
+    <Compile Include="Seeds\PaymentType.cs" />
+    <Compile Include="Seeds\Product.cs" />
+    <Compile Include="Seeds\ProductType.cs" />
+    <Compile Include="Seeds\Province.cs" />
+    <Compile Include="Seeds\Purchase.cs" />
+    <Compile Include="Seeds\Rate.cs" />
+    <Compile Include="Seeds\Setting.cs" />
+    <Compile Include="Seeds\Tag.cs" />
+    <Compile Include="Seeds\User.cs" />
+    <Compile Include="Seeds\UserSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMS.Xamarin.DAL.Model\PMS.Xam.DAL.Model.csproj">
@@ -67,7 +95,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <EmbeddedResource Include="Migrations\201608151948080_v0.resx">
+      <DependentUpon>201608151948080_v0.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

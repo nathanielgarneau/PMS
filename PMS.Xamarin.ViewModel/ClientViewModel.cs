@@ -13,5 +13,6 @@ namespace PMS.Xam.ViewModel
         
         public IdentificationTypeViewModel IdentificationType { get; set; }
         public string OtherIdentificationNumber { get; set; }
+        public IdentificationTypeViewModel OtherIdentificationType { get; set; }
     }
 }

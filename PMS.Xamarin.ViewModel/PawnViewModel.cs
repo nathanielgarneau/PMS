@@ -10,9 +10,9 @@ namespace PMS.Xam.ViewModel
     public class PawnViewModel:IEntity<int>
     {
         public int Id { get; set; }
-        public IEnumerable<ProductViewModel> Items { get; set; }
-        public IEnumerable<NoteViewModel> Notes { get; set; }
-        public IEnumerable<LocationViewModel> StorageLocations { get; set; }
+        public ICollection<ProductViewModel> Items { get; set; }
+        public ICollection<NoteViewModel> Notes { get; set; }
+        public ICollection<LocationViewModel> StorageLocations { get; set; }
         public double PawnValue { get; set; }
         public double? EstimatedValueLow { get; set; }
         public double? EstimatedValueHigh { get; set; }
@@ -22,7 +22,7 @@ namespace PMS.Xam.ViewModel
         public DateTime? ExtendedToDate { get; set; }
         public double PickupPrice { get; set; }
         //public double PickupPriceRemaining{get;}//TODO: add to viewmodel
-        public IEnumerable<PaymentViewModel> Payments { get; set; }
+        public ICollection<PaymentViewModel> Payments { get; set; }
         //public bool PickedUp//TODO:Add to viewmodel
         public DateTime? ClosedDate { get; set; }
         public ClientViewModel Client { get; set; }

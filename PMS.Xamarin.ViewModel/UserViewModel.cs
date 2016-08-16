@@ -15,7 +15,7 @@ namespace PMS.Xam.ViewModel
         public int Pin { get; set; }
         public string Password { get; set; }
 
-        public UserSettingsViewModel UserSettings
+        public ICollection<UserSettingsViewModel> UserSettings
         {
             get;
             set;

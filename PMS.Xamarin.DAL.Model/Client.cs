@@ -14,6 +14,7 @@ namespace PMS.Xam.DAL.Model
         
         public IdentificationType IdentificationType { get; set; }
         public string OtherIdentificationNumber { get; set; }
+         public IdentificationType OtherIdentificationType { get; set; }
             #region IDispose Region
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

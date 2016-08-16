@@ -43,12 +43,12 @@ namespace PMS.BLL
             };
         }
 
-        internal static IEnumerable<Xam.DAL.Model.Payment> ToDal(IEnumerable<PaymentViewModel> viewModels)
+        internal static ICollection<Xam.DAL.Model.Payment> ToDal(ICollection<PaymentViewModel> viewModels)
         {
               return viewModels.Select(model => ToDal(model)).ToList();
         }
 
-        internal static IEnumerable<PaymentViewModel> ToViewModel(IEnumerable<Xam.DAL.Model.Payment> models)
+        internal static ICollection<PaymentViewModel> ToViewModel(ICollection<Xam.DAL.Model.Payment> models)
         {
               return models.Select(model => ToViewModel(model)).ToList();
         }

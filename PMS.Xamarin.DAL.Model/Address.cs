@@ -4,7 +4,7 @@ using PMS.Xam.Model.Interfaces;
 namespace PMS.Xam.DAL.Model
 {
     public class Address:IEntity<int>, IDisposable
-    {
+    { 
         public int Id { get; set; }
         public string Name { get; set; }
         public string Street { get; set; }

@@ -42,12 +42,12 @@ namespace PMS.BLL
             };
         }
 
-        internal static IEnumerable<Xam.DAL.Model.Location> ToDal(IEnumerable<LocationViewModel> storageLocations)
+        internal static ICollection<Xam.DAL.Model.Location> ToDal(ICollection<LocationViewModel> storageLocations)
         {
             throw new NotImplementedException();
         }
 
-        internal static IEnumerable<LocationViewModel> ToViewModel(IEnumerable<Xam.DAL.Model.Location> storageLocations)
+        internal static ICollection<LocationViewModel> ToViewModel(ICollection<Xam.DAL.Model.Location> storageLocations)
         {
             throw new NotImplementedException();
         }

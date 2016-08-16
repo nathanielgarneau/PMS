@@ -29,7 +29,7 @@ namespace PMS.BLL
                 Id = viewModel.Id,
                 Name = viewModel.Name,
                 Colour = Colour.ToDal(viewModel.Colour),
-                Condition = Condition.ToDal(viewModel.Condition),
+                Conditions = Condition.ToDal(viewModel.Conditions),
                 Description = viewModel.Description,
                 ProductType = ProductType.ToDal(viewModel.ProductType),
                 Tags = Tag.ToDal(viewModel.Tags)
@@ -37,7 +37,7 @@ namespace PMS.BLL
             return record;
         }
 
-        public static IEnumerable<Xam.DAL.Model.Product> ToDal(IEnumerable<ProductViewModel> viewModels)
+        public static ICollection<Xam.DAL.Model.Product> ToDal(ICollection<ProductViewModel> viewModels)
         {
             return viewModels.Select(viewModel => ToDal(viewModel)).ToList();
         }
@@ -49,14 +49,14 @@ namespace PMS.BLL
                 Id = model.Id,
                 Name = model.Name,
                 Colour = Colour.ToViewModel(model.Colour),
-                Condition = Condition.ToViewModel(model.Condition),
+                Conditions = Condition.ToViewModel(model.Conditions),
                 Description = model.Description,
                 ProductType = ProductType.ToViewModel(model.ProductType),
                 Tags = Tag.ToViewModel(model.Tags)
             };
             return result;
         }
-           public static IEnumerable<ProductViewModel> ToViewModel(IEnumerable<Xam.DAL.Model.Product> models)
+           public static ICollection<ProductViewModel> ToViewModel(ICollection<Xam.DAL.Model.Product> models)
            {
                return models.Select(model => ToViewModel(model)).ToList();
            }
