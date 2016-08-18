@@ -6,8 +6,8 @@ namespace PMS.Xam.DAL.Model
     public class Rate:IEntity<int>,IDisposable
     {
         public int Id { get; set; }
-        public string Name;
-        public double Value;
+          public string Name { get; set; }
+        public double Value{ get; set; }
             #region IDispose Region
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

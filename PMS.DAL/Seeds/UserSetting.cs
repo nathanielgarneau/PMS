@@ -4,9 +4,11 @@ using PMS.Xam.Model.Interfaces;
 
 namespace  PMS.DAL.Seeds
 {
-    public class Facility:ISeed {  public void Seed(CodeFirstModel context)
+    public class UserSetting :ISeed
+    {
+        public void Seed(CodeFirstModel context)
         {
-           try
+            try
             {
                 throw new NotImplementedException();
             }

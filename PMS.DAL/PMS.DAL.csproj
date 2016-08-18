@@ -55,9 +55,9 @@
     <Compile Include="CodeFirstModel.cs" />
     <Compile Include="DBContext.cs" />
     <Compile Include="Interfaces\ISeed.cs" />
-    <Compile Include="Migrations\201608151948080_v0.cs" />
-    <Compile Include="Migrations\201608151948080_v0.Designer.cs">
-      <DependentUpon>201608151948080_v0.cs</DependentUpon>
+    <Compile Include="Migrations\201608181643122_V00.cs" />
+    <Compile Include="Migrations\201608181643122_V00.Designer.cs">
+      <DependentUpon>201608181643122_V00.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,7 +82,7 @@
     <Compile Include="Seeds\Setting.cs" />
     <Compile Include="Seeds\Tag.cs" />
     <Compile Include="Seeds\User.cs" />
-    <Compile Include="Seeds\UserSettings.cs" />
+    <Compile Include="Seeds\UserSetting.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMS.Xamarin.DAL.Model\PMS.Xam.DAL.Model.csproj">
@@ -95,8 +95,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608151948080_v0.resx">
-      <DependentUpon>201608151948080_v0.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608181643122_V00.resx">
+      <DependentUpon>201608181643122_V00.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

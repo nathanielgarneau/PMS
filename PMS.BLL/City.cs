@@ -24,7 +24,8 @@ namespace PMS.BLL
             return new Xam.DAL.Model.City
             {
                 Id = viewModel.Id,
-                Name = viewModel.Name
+                Name = viewModel.Name,
+                Province = Province.ToDal( viewModel.Province)
             };
         }
         public static CityViewModel ToViewModel(Xam.DAL.Model.City model)
@@ -32,7 +33,8 @@ namespace PMS.BLL
             return new CityViewModel
             {
                 Id = model.Id,
-                Name = model.Name
+                Name = model.Name,
+                Province = Province.ToViewModel( model.Province)
             };
         }
     }

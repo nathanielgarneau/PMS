@@ -6,5 +6,6 @@ namespace PMS.Xam.ViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public ProvinceViewModel Province { get; set; }
     }
 }

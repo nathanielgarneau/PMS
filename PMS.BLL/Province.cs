@@ -24,7 +24,9 @@ namespace PMS.BLL
             return new Xam.DAL.Model.Province
             {
                 Id = viewModel.Id,
-                Name = viewModel.Name
+                Name = viewModel.Name,
+                Abbreviation = viewModel.Abbreviation,
+                Country = Country.ToDal(viewModel.Country)
             };
         }
         public static ProvinceViewModel ToViewModel(Xam.DAL.Model.Province model)
@@ -32,7 +34,9 @@ namespace PMS.BLL
             return new ProvinceViewModel
             {
                 Id = model.Id,
-                Name = model.Name
+                Name = model.Name,
+                Abbreviation = model.Abbreviation,
+                Country = Country.ToViewModel(model.Country)
             };
         }
     }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.Xam.DAL.Model
@@ -7,7 +9,9 @@ namespace PMS.Xam.DAL.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Country Country { get; set; }
+        public string Abbreviation { get; set; }
+        public virtual Country Country { get; set; }
+        public virtual ICollection<City> Cities { get; set; }
             #region IDispose Region
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

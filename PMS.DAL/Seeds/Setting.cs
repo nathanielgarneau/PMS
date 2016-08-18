@@ -9,7 +9,14 @@ namespace PMS.DAL.Seeds
 {
     public class Setting :ISeed{  public void Seed(CodeFirstModel context)
         {
-            throw new NotImplementedException();
+           try
+            {
+                throw new NotImplementedException();
+            }
+            catch(NotImplementedException e)
+            {
+                
+            }
         }
     }
 }

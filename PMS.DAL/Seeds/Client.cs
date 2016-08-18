@@ -8,7 +8,14 @@ namespace PMS.DAL.Seeds
     {
         public void Seed(CodeFirstModel context)
         {
-            throw new NotImplementedException();
+             try
+            {
+                throw new NotImplementedException();
+            }
+            catch(NotImplementedException e)
+            {
+                
+            }
         }
     }
 }

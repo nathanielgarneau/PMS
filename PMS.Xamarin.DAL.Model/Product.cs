@@ -22,6 +22,9 @@ namespace PMS.Xam.DAL.Model
 
         public ICollection<Tag> Tags { get; set; }
 
+         public virtual ICollection<Pawn> Pawns { get; set; }
+         public virtual ICollection<Purchase> Purchases { get; set; }
+
             #region IDispose Region
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

@@ -10,7 +10,7 @@ namespace PMS.Xam.DAL.Model
         public string Street { get; set; }
         public City City { get; set; }
         public Province Province { get; set; }
-        public string PostalCode { get; set; }
+        public string PostalCode { get; set; } 
         public Country Country { get; set; }
             #region IDispose Region
         private bool disposed = false;

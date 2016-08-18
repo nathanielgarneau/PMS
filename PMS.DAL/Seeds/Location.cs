@@ -6,7 +6,14 @@ namespace  PMS.DAL.Seeds
 {
     public class Location :ISeed{  public void Seed(CodeFirstModel context)
         {
-            throw new NotImplementedException();
+         try
+            {
+                throw new NotImplementedException();
+            }
+            catch(NotImplementedException e)
+            {
+                
+            }
         }
     }
 }

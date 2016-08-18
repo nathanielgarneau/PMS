@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using PMS.DAL.Interfaces;
 using PMS.Xam.Model.Interfaces;
 
@@ -8,7 +10,21 @@ namespace PMS.DAL.Seeds
     {
         public void Seed(CodeFirstModel context)
         {
-            throw new NotImplementedException();
+            context.Country.AddOrUpdate(
+                x => x.Id,
+                GetCountries()
+                );   
+        }
+
+        private PMS.Xam.DAL.Model.Country[] GetCountries( )
+        {
+            var cities = new List<PMS.Xam.DAL.Model.Country>();
+                var city = new PMS.Xam.DAL.Model.Country()
+                {
+                    Name = "Canada"
+                };
+                cities.Add(city);
+            return cities.ToArray();
         }
     }
 }

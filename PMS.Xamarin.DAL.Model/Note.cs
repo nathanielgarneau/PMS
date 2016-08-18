@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.Xam.DAL.Model
@@ -7,6 +8,8 @@ namespace PMS.Xam.DAL.Model
     {
         public int Id { get; set; }
         public string Value { get; set; }
+           public virtual ICollection<Pawn> Pawns { get; set; }
+         public virtual ICollection<Purchase> Purchases { get; set; }
             #region IDispose Region
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
