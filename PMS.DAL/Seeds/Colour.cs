@@ -10,7 +10,7 @@ namespace PMS.DAL.Seeds
     public class Colour:ISeed
     {  public void Seed(CodeFirstModel context)
         {
-            context.Colour.AddOrUpdate(x => x.Id,
+            context.Colour.AddOrUpdate(x => x.Name,
                 GetColours()
                 );  
         }

@@ -7,7 +7,7 @@ namespace PMS.Xam.DAL.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
             #region IDispose Region
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

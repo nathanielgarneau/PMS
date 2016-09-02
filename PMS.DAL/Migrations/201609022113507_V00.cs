@@ -70,7 +70,7 @@ namespace PMS.DAL.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         FirstName = c.String(nullable: false, maxLength: 50),
                         LastName = c.String(nullable: false, maxLength: 50),
-                        LicenseNumber = c.String(nullable: false, maxLength: 50),
+                        IdentificationNumber = c.String(nullable: false, maxLength: 50),
                         OtherIdentificationNumber = c.String(maxLength: 50),
                         Address_Id = c.Int(nullable: false),
                         IdentificationType_Id = c.Int(nullable: false),

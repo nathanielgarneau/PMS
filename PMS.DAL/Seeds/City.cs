@@ -12,7 +12,7 @@ namespace PMS.DAL.Seeds
         public void Seed(CodeFirstModel context)
         {
             context.City.AddOrUpdate(
-                x => x.Id,
+                x =>  x.Id,
                 GetCities(context)
                 );
         }
@@ -20,14 +20,16 @@ namespace PMS.DAL.Seeds
         private PMS.Xam.DAL.Model.City[] GetCities(CodeFirstModel context)
         {
             var cities = new List<PMS.Xam.DAL.Model.City>();
-            foreach (var kvp in CanadianCities)
+            var i = 1;
+            foreach (var city in CanadianCities.Select(kvp => new PMS.Xam.DAL.Model.City()
             {
-                var city = new PMS.Xam.DAL.Model.City()
-                {
-                    Name = kvp.Key,
-                    Province = context.Province.First(x => x.Name == kvp.Value)
-                };
+                Id = i,
+                Name = kvp.Key,
+                Province = context.Province.First(x => x.Name == kvp.Value)
+            }))
+            {
                 cities.Add(city);
+                i++;
             }
 
             return cities.ToArray();

@@ -9,7 +9,7 @@ namespace PMS.Xam.WebApiClient
 {
    public static class Config
    {
-       public static Uri BaseAddress = new Uri("http://localhost:55380/");
+       public static Uri BaseAddress = new Uri("http://10.31.185.126/");
        public static MediaTypeWithQualityHeaderValue JsonHeaderValue = new MediaTypeWithQualityHeaderValue("application/json");
     }
 }

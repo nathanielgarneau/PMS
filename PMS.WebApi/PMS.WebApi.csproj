@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -85,6 +89,10 @@
       <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -111,9 +119,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
@@ -216,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CustomViewEngine.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -260,6 +266,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdentificationTypeController.cs" />
     <Compile Include="Controllers\Interfaces\IApiController.cs" />
+    <Compile Include="Controllers\Interfaces\IViewController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\PawnController.cs" />
@@ -274,10 +281,31 @@
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserSettingsController.cs" />
+    <Compile Include="Controllers\ViewControllers\AddressController.cs" />
+    <Compile Include="Controllers\ViewControllers\CityController.cs" />
+    <Compile Include="Controllers\ViewControllers\ClientController.cs" />
+    <Compile Include="Controllers\ViewControllers\ColourController.cs" />
+    <Compile Include="Controllers\ViewControllers\ConditionController.cs" />
+    <Compile Include="Controllers\ViewControllers\CountryController.cs" />
+    <Compile Include="Controllers\ViewControllers\FacilityController.cs" />
+    <Compile Include="Controllers\ViewControllers\IdentificationTypeController.cs" />
+    <Compile Include="Controllers\ViewControllers\LocationController.cs" />
+    <Compile Include="Controllers\ViewControllers\NoteController.cs" />
+    <Compile Include="Controllers\ViewControllers\PawnController.cs" />
+    <Compile Include="Controllers\ViewControllers\PaymentController.cs" />
+    <Compile Include="Controllers\ViewControllers\PaymentTypeController.cs" />
+    <Compile Include="Controllers\ViewControllers\ProductController.cs" />
+    <Compile Include="Controllers\ViewControllers\ProductTypeController.cs" />
+    <Compile Include="Controllers\ViewControllers\ProvinceController.cs" />
+    <Compile Include="Controllers\ViewControllers\PurchaseController.cs" />
+    <Compile Include="Controllers\ViewControllers\RateController.cs" />
+    <Compile Include="Controllers\ViewControllers\SettingController.cs" />
+    <Compile Include="Controllers\ViewControllers\TagController.cs" />
+    <Compile Include="Controllers\ViewControllers\UserController.cs" />
+    <Compile Include="Controllers\ViewControllers\UserSettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -290,6 +318,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Gridmvc.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -319,7 +348,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Grid.mvc.readme" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -345,6 +378,119 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\Address\Create.cshtml" />
+    <Content Include="Views\Address\Delete.cshtml" />
+    <None Include="Views\Address\Details.cshtml" />
+    <None Include="Views\Address\Edit.cshtml" />
+    <None Include="Views\Address\Index.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\City\Details.cshtml" />
+    <Content Include="Views\City\Create.cshtml" />
+    <Content Include="Views\City\Index.cshtml" />
+    <Content Include="Views\City\Edit.cshtml" />
+    <Content Include="Views\City\Delete.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Client\Delete.cshtml" />
+    <Content Include="Views\Client\Details.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Colour\Create.cshtml" />
+    <Content Include="Views\Colour\Delete.cshtml" />
+    <Content Include="Views\Colour\Details.cshtml" />
+    <Content Include="Views\Colour\Edit.cshtml" />
+    <Content Include="Views\Colour\Index.cshtml" />
+    <Content Include="Views\Condition\Create.cshtml" />
+    <Content Include="Views\Condition\Delete.cshtml" />
+    <Content Include="Views\Condition\Details.cshtml" />
+    <Content Include="Views\Condition\Edit.cshtml" />
+    <Content Include="Views\Condition\Index.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
+    <Content Include="Views\Country\Details.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Facility\Create.cshtml" />
+    <Content Include="Views\Facility\Delete.cshtml" />
+    <Content Include="Views\Facility\Details.cshtml" />
+    <Content Include="Views\Facility\Edit.cshtml" />
+    <Content Include="Views\Facility\Index.cshtml" />
+    <Content Include="Views\IdentificationType\Create.cshtml" />
+    <Content Include="Views\IdentificationType\Delete.cshtml" />
+    <Content Include="Views\IdentificationType\Details.cshtml" />
+    <Content Include="Views\IdentificationType\Edit.cshtml" />
+    <Content Include="Views\IdentificationType\Index.cshtml" />
+    <Content Include="Views\Location\Create.cshtml" />
+    <Content Include="Views\Location\Delete.cshtml" />
+    <Content Include="Views\Location\Details.cshtml" />
+    <Content Include="Views\Location\Edit.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\Note\Create.cshtml" />
+    <Content Include="Views\Note\Delete.cshtml" />
+    <Content Include="Views\Note\Details.cshtml" />
+    <Content Include="Views\Note\Edit.cshtml" />
+    <Content Include="Views\Note\Index.cshtml" />
+    <Content Include="Views\Pawn\Create.cshtml" />
+    <Content Include="Views\Pawn\Delete.cshtml" />
+    <Content Include="Views\Pawn\Details.cshtml" />
+    <Content Include="Views\Pawn\Edit.cshtml" />
+    <Content Include="Views\Pawn\Index.cshtml" />
+    <Content Include="Views\UserSettings\Create.cshtml" />
+    <Content Include="Views\UserSettings\Delete.cshtml" />
+    <Content Include="Views\UserSettings\Details.cshtml" />
+    <Content Include="Views\UserSettings\Edit.cshtml" />
+    <Content Include="Views\UserSettings\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Tag\Create.cshtml" />
+    <Content Include="Views\Tag\Delete.cshtml" />
+    <Content Include="Views\Tag\Details.cshtml" />
+    <Content Include="Views\Tag\Edit.cshtml" />
+    <Content Include="Views\Tag\Index.cshtml" />
+    <Content Include="Views\Setting\Create.cshtml" />
+    <Content Include="Views\Setting\Delete.cshtml" />
+    <Content Include="Views\Setting\Details.cshtml" />
+    <Content Include="Views\Setting\Edit.cshtml" />
+    <Content Include="Views\Setting\Index.cshtml" />
+    <Content Include="Views\Rate\Create.cshtml" />
+    <Content Include="Views\Rate\Delete.cshtml" />
+    <Content Include="Views\Rate\Details.cshtml" />
+    <Content Include="Views\Rate\Edit.cshtml" />
+    <Content Include="Views\Rate\Index.cshtml" />
+    <Content Include="Views\Purchase\Create.cshtml" />
+    <Content Include="Views\Purchase\Delete.cshtml" />
+    <Content Include="Views\Purchase\Details.cshtml" />
+    <Content Include="Views\Purchase\Edit.cshtml" />
+    <Content Include="Views\Purchase\Index.cshtml" />
+    <Content Include="Views\Province\Create.cshtml" />
+    <Content Include="Views\Province\Delete.cshtml" />
+    <Content Include="Views\Province\Details.cshtml" />
+    <Content Include="Views\Province\Edit.cshtml" />
+    <Content Include="Views\Province\Index.cshtml" />
+    <Content Include="Views\ProductType\Create.cshtml" />
+    <Content Include="Views\ProductType\Delete.cshtml" />
+    <Content Include="Views\ProductType\Details.cshtml" />
+    <Content Include="Views\ProductType\Edit.cshtml" />
+    <Content Include="Views\ProductType\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\PaymentType\Create.cshtml" />
+    <Content Include="Views\PaymentType\Delete.cshtml" />
+    <Content Include="Views\PaymentType\Details.cshtml" />
+    <Content Include="Views\PaymentType\Edit.cshtml" />
+    <Content Include="Views\PaymentType\Index.cshtml" />
+    <Content Include="Views\Payment\Create.cshtml" />
+    <Content Include="Views\Payment\Delete.cshtml" />
+    <Content Include="Views\Payment\Details.cshtml" />
+    <Content Include="Views\Payment\Edit.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

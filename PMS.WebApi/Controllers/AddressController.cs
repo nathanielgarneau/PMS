@@ -4,36 +4,37 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
-    [RoutePrefix("api/Address")]
+    [System.Web.Http.RoutePrefix("api/Address")]
     public class AddressController : ApiController, Interfaces.IApiController<AddressViewModel, int>
     {
         private readonly BLL.Address _businessLayer = new BLL.Address();
 
-        [HttpGet]
-        [Route("Many")]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("Many")]
         public IEnumerable<AddressViewModel> GetMany(params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
 
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public AddressViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
 
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public IEnumerable<AddressViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
 
-        [HttpPost]
-        [Route("Many")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("Many")]
         public HttpResponseMessage PostMany(params AddressViewModel[] items)
         {
             try
@@ -47,7 +48,7 @@ namespace PMS.WebApi.Controllers
             }
         }
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public HttpResponseMessage Post(AddressViewModel item)
         {
             try
@@ -61,8 +62,8 @@ namespace PMS.WebApi.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("Many")]
+        [System.Web.Http.HttpPut]
+        [System.Web.Http.Route("Many")]
         public HttpResponseMessage PutMany(params AddressViewModel[] items)
         {
             try
@@ -76,7 +77,7 @@ namespace PMS.WebApi.Controllers
             }
         }
 
-        [HttpPut]
+        [System.Web.Http.HttpPut]
         public HttpResponseMessage Put(AddressViewModel item)
         {
             try
@@ -90,8 +91,8 @@ namespace PMS.WebApi.Controllers
             }
         }
 
-        [HttpDelete]
-        [Route("Many")]
+        [System.Web.Http.HttpDelete]
+        [System.Web.Http.Route("Many")]
         public HttpResponseMessage DeleteMany(params AddressViewModel[] items)
         {
             try
@@ -105,7 +106,7 @@ namespace PMS.WebApi.Controllers
             }
         }
 
-        [HttpDelete]
+        [System.Web.Http.HttpDelete]
         public HttpResponseMessage Delete(AddressViewModel item)
         {
             try
@@ -118,5 +119,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
     }
+
+
+
+
 }

@@ -10,15 +10,15 @@ namespace PMS.Xam.DAL.Model
    public  class Purchase : IEntity<int>,IDisposable
     {
         public int Id { get; set; }
-        public ICollection<Product> Items { get; set; }
-        public ICollection<Note> Notes { get; set; }
-        public ICollection<Location> StorageLocations { get; set; }
+        public virtual ICollection<Product> Items { get; set; }
+        public virtual ICollection<Note> Notes { get; set; }
+        public virtual ICollection<Location> StorageLocations { get; set; }
         public double PurchaseCost { get; set; }
         public double? EstimatedValueLow { get; set; }
         public double? EstimatedValueHigh { get; set; }
         public DateTime SaleableDate { get; set; }
-        public ICollection<Payment> Payments { get; set; }
-       public Client Client { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
+       public virtual Client Client { get; set; }
 
        #region IDispose Region
         private bool disposed = false;

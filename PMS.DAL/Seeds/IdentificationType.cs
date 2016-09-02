@@ -9,7 +9,7 @@ namespace PMS.DAL.Seeds
     public class IdentificationType :ISeed{  public void Seed(CodeFirstModel context)
         {
               context.IdentificationType.AddOrUpdate(
-                x => x.Id,
+                x => x.Name,
                 GetIdentificationTypes()
                 ); 
         }

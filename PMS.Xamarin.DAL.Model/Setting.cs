@@ -12,7 +12,7 @@ namespace PMS.Xam.DAL.Model
         public string Name { get; set; }
         public string Value { get; set; }
      
-        public Setting() { }
+   
 
         #region IDispose Region
         private bool disposed = false;

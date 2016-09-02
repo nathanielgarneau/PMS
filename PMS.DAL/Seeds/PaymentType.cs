@@ -9,7 +9,7 @@ namespace  PMS.DAL.Seeds
     public class PaymentType :ISeed{  public void Seed(CodeFirstModel context)
         {
        
-               context.PaymentType.AddOrUpdate(x => x.Id,
+               context.PaymentType.AddOrUpdate(x => x.Name,
                 GetPaymentTypes()
                 );  
         }

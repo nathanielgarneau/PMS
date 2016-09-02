@@ -55,9 +55,9 @@
     <Compile Include="CodeFirstModel.cs" />
     <Compile Include="DBContext.cs" />
     <Compile Include="Interfaces\ISeed.cs" />
-    <Compile Include="Migrations\201608181643122_V00.cs" />
-    <Compile Include="Migrations\201608181643122_V00.Designer.cs">
-      <DependentUpon>201608181643122_V00.cs</DependentUpon>
+    <Compile Include="Migrations\201609022113507_V00.cs" />
+    <Compile Include="Migrations\201609022113507_V00.Designer.cs">
+      <DependentUpon>201609022113507_V00.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,8 +95,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608181643122_V00.resx">
-      <DependentUpon>201608181643122_V00.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609022113507_V00.resx">
+      <DependentUpon>201609022113507_V00.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

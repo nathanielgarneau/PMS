@@ -9,7 +9,7 @@ namespace PMS.Xam.DAL.Model
         public int Id { get; set; }
         public double Value { get; set; }
         public DateTime Date { get; set; }
-        public PaymentType PaymentType { get; set; }
+        public virtual PaymentType PaymentType { get; set; }
         public virtual Pawn Pawn { get; set; }
         public virtual Purchase Purchase { get; set; }
             #region IDispose Region

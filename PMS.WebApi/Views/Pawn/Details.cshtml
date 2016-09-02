@@ -1,0 +1,45 @@
+﻿@model PMS.Xam.ViewModel.PawnViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Pawn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt> @Html.DisplayNameFor(model => model.Id)</dt>
+        <dd> @Html.DisplayFor(model => model.Id) </dd>
+        <dt> @Html.DisplayNameFor(model => model.Client)</dt>
+        <dd> @Html.DisplayFor(model => model.Client) </dd>
+        <dt> @Html.DisplayNameFor(model => model.Rate)</dt>
+        <dd> @Html.DisplayFor(model => model.Rate) </dd>
+        <dt> @Html.DisplayNameFor(model => model.ExpiryDate)</dt>
+        <dd> @Html.DisplayFor(model => model.ExpiryDate) </dd>
+        <dt> @Html.DisplayNameFor(model => model.ExtendedToDate)</dt>
+        <dd> @Html.DisplayFor(model => model.ExtendedToDate) </dd>
+        <dt> @Html.DisplayNameFor(model => model.Items)</dt>
+        <dd> @Html.DisplayFor(model => model.Items) </dd>
+        <dt> @Html.DisplayNameFor(model => model.StorageLocations)</dt>
+        <dd> @Html.DisplayFor(model => model.StorageLocations) </dd>
+        <dt> @Html.DisplayNameFor(model => model.PawnValue)</dt>
+        <dd> @Html.DisplayFor(model => model.PawnValue) </dd>
+        <dt> @Html.DisplayNameFor(model => model.Payments)</dt>
+        <dd> @Html.DisplayFor(model => model.Payments) </dd>
+        <dt> @Html.DisplayNameFor(model => model.EstimatedValueHigh)</dt>
+        <dd> @Html.DisplayFor(model => model.EstimatedValueHigh) </dd>
+        <dt> @Html.DisplayNameFor(model => model.EstimatedValueLow)</dt>
+        <dd> @Html.DisplayFor(model => model.EstimatedValueLow) </dd>
+        <dt> @Html.DisplayNameFor(model => model.ClosedDate)</dt>
+        <dd> @Html.DisplayFor(model => model.ClosedDate) </dd>
+        <dt> @Html.DisplayNameFor(model => model.Notes)</dt>
+        <dd> @Html.DisplayFor(model => model.Notes) </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

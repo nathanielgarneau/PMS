@@ -1,0 +1,41 @@
+﻿@using System.Linq
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+    <meta charset="utf-8" />
+    <title>My Site's Title</title>
+    <script src="//code.jquery.com/jquery.min.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $('#btn-all').on('click', function () {
+                $.get('/api/address', function (data) {
+                    $('#result').empty();
+                    $.each(data, function (i, v) {
+                        $('#result').html($('#result').html() + v.Title + '<br />');
+                    });
+                }, 'json');
+            });
+            $('#btn').on('click', function () {
+                $.get('/api/address/' + $('#Id').val(), function (data) {
+                    $('#result').empty()
+                    $('#result').html(data.Title +
+                        '<br />' + data.Genre +
+                        '<br />' + data.ReleaseDate);
+                }, 'json');
+            });
+            $('#btn-delete').on('click', function () {
+                $.ajax({
+                    type: 'Delete',
+                    url: '/api/address?id=' + $('#Id').val()
+                });
+            });
+        });
+    </script>
+
+    <button id="btn-all">Get all Addresses</button> <button id="btn">Get Address</button> <button id="btn-delete">Delete Address</button>
+    @Html.DropDownList("Id", Enumerable.Range(1, 5).Select(i => new SelectListItem { Text = i.ToString() }))
+    <div id="result"></div>
+
+

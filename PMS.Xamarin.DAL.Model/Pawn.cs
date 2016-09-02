@@ -11,20 +11,20 @@ namespace PMS.Xam.DAL.Model
     public class Pawn : IEntity<int>,IDisposable
     {
         public int Id { get; set; }
-        public Client Client { get; set; }
-        public ICollection<Product> Items { get; set; }
-        public ICollection<Note> Notes { get; set; }
-        public ICollection<Location> StorageLocations { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual ICollection<Product> Items { get; set; }
+        public virtual ICollection<Note> Notes { get; set; }
+        public virtual ICollection<Location> StorageLocations { get; set; }
         public double PawnValue { get; set; }
         public double? EstimatedValueLow { get; set; }
         public double? EstimatedValueHigh { get; set; }
-        public Rate Rate { get; set; }
+        public virtual Rate Rate { get; set; }
         public DateTime ExpiryDate { get; set; }
         //public bool Extended { get; set; }//TODO: add to viewmodel
         public DateTime? ExtendedToDate { get; set; }
         public double PickupPrice { get; set; }
         //public double PickupPriceRemaining{get;}//TODO: add to viewmodel
-        public ICollection<Payment> Payments { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
         //public bool PickedUp//TODO:Add to viewmodel
         public DateTime? ClosedDate { get; set; }
         //public bool Closed { get; set; }//TODO: add to viewmodel

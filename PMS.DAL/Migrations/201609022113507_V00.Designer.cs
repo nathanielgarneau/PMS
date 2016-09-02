@@ -13,7 +13,7 @@ namespace PMS.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201608181643122_V00"; }
+            get { return "201609022113507_V00"; }
         }
         
         string IMigrationMetadata.Source

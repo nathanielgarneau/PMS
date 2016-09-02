@@ -11,7 +11,7 @@ namespace PMS.DAL.Seeds
         public void Seed(CodeFirstModel context)
         {
             context.Country.AddOrUpdate(
-                x => x.Id,
+                x => x.Name,
                 GetCountries()
                 );   
         }

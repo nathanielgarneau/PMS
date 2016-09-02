@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
+using System.Data.Entity.Migrations;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using PMS.Xam.DAL.Model;
@@ -13,9 +14,9 @@ namespace PMS.DAL
         public CodeFirstModel()
             : base("name=CodeFirstModel")
         {
-            Database.SetInitializer<CodeFirstModel>(null);
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<MicroQCCodeFirstModel, Migrations.Configuration>());
-            //Configuration.LazyLoadingEnabled = false;
+           // Database.SetInitializer<CodeFirstModel>(null);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<CodeFirstModel, Migrations.Configuration>());
+            Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<Address> Address { get; set; }
@@ -105,7 +106,7 @@ namespace PMS.DAL
             entityConfig.Property(x => x.FirstName).HasMaxLength(50).IsRequired();
             entityConfig.Property(x => x.LastName).HasMaxLength(50).IsRequired();
             entityConfig.HasRequired(x => x.Address);
-            entityConfig.Property(x => x.LicenseNumber).HasMaxLength(50).IsRequired();
+            entityConfig.Property(x => x.IdentificationNumber).HasMaxLength(50).IsRequired();
             entityConfig.HasRequired(x => x.IdentificationType);
             entityConfig.HasOptional(x => x.OtherIdentificationType);
             entityConfig.Property(x => x.OtherIdentificationNumber).HasMaxLength(50);

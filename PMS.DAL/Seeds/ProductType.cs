@@ -9,7 +9,7 @@ namespace  PMS.DAL.Seeds
     public class ProductType :ISeed{
         public void Seed(CodeFirstModel context)
         {
-            context.ProductType.AddOrUpdate(x => x.Id,
+            context.ProductType.AddOrUpdate(x => x.Name,
                 GetPaymentTypes()
                 );   
         }

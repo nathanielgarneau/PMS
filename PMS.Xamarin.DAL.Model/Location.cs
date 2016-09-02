@@ -10,7 +10,7 @@ namespace PMS.Xam.DAL.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Facility Facility { get; set; }
+        public virtual Facility Facility { get; set; }
         public virtual ICollection<Pawn> Pawns { get; set; }
          public virtual ICollection<Purchase> Purchases { get; set; }
 

@@ -13,14 +13,14 @@ namespace PMS.Xam.DAL.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ProductType ProductType { get; set; }
+        public virtual ProductType ProductType { get; set; }
 
         public int Year { get; set; }
-        public ICollection<Condition> Conditions { get; set; }
+        public virtual ICollection<Condition> Conditions { get; set; }
 
-        public Colour Colour { get; set; }
+        public virtual Colour Colour { get; set; }
 
-        public ICollection<Tag> Tags { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
 
          public virtual ICollection<Pawn> Pawns { get; set; }
          public virtual ICollection<Purchase> Purchases { get; set; }

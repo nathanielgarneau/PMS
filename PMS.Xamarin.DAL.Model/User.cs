@@ -12,7 +12,7 @@ namespace PMS.Xam.DAL.Model
         public int Pin { get; set; }
         public string Password { get; set; }
 
-        public ICollection<UserSetting> UserSettings
+        public virtual  ICollection<UserSetting> UserSettings
         {
             get;
             set;

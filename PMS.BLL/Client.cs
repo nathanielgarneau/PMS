@@ -28,7 +28,7 @@ namespace PMS.BLL
                 FirstName = viewModel.FirstName,
                 LastName = viewModel.LastName,
                 IdentificationType = IdentificationType.ToDal(viewModel.IdentificationType),
-                LicenseNumber = viewModel.LicenseNumber,
+                IdentificationNumber = viewModel.IdentificationNumber,
                 OtherIdentificationNumber = viewModel.OtherIdentificationNumber,
                 OtherIdentificationType = IdentificationType.ToDal(viewModel.OtherIdentificationType)
             };
@@ -42,7 +42,7 @@ namespace PMS.BLL
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 IdentificationType = IdentificationType.ToViewModel(model.IdentificationType),
-                LicenseNumber = model.LicenseNumber,
+                IdentificationNumber = model.IdentificationNumber,
                 OtherIdentificationNumber = model.OtherIdentificationNumber,
                 OtherIdentificationType = IdentificationType.ToViewModel(model.OtherIdentificationType)
             };

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using PMS.DAL.Repositories.Interfaces;
 using PMS.Xam.Model.Interfaces;
@@ -22,15 +23,15 @@ namespace PMS.BLL
 
         public void Add(params TX[] items)
         {
-            List<T> settings = new List<T>();
-            Parallel.ForEach(items, item =>
-            {
-                T record = ConvertToDal(item);
-                lock (settings)
-                {
-                    settings.Add(record);
-                }
-            });
+            List<T> settings = items.Select(item => ConvertToDal(item)).ToList();
+            //Parallel.ForEach(items, item =>
+            //{
+            //    T record = ConvertToDal(item);
+            //    lock (settings)
+            //    {
+            //        settings.Add(record);
+            //    }
+            //});
             Repository.Insert(settings);
         }
 
@@ -44,30 +45,28 @@ namespace PMS.BLL
         public List<TX> GetAll()
         {
             IEnumerable<T> items = Repository.SelectAll();
-            List<TX> results = new List<TX>();
-            Parallel.ForEach(items, item =>
-            {
-                TX result = ConvertToViewModel(item);
-                lock (results)
-                {
-                    results.Add(result);
-                }
-            });
-            return results;
+            //Parallel.ForEach(items, item =>
+            //{
+            //    TX result = ConvertToViewModel(item);
+            //    lock (results)
+            //    {
+            //        results.Add(result);
+            //    }
+            //});
+            return items.Select(item => ConvertToViewModel(item)).ToList();
         }
 
         public List<TX> GetList(params int[] ids)
         {
-            List<TX> results = new List<TX>();
-            Parallel.ForEach(ids, id =>
-            {
-                TX item = Get(id);
-                lock (results)
-                {
-                    results.Add(item);
-                }
-            });
-            return results;
+            //Parallel.ForEach(ids, id =>
+            //{
+            //    TX item = Get(id);
+            //    lock (results)
+            //    {
+            //        results.Add(item);
+            //    }
+            //});
+            return ids.Select(id => Get(id)).ToList();
         }
 
         public void Remove(TX item)
@@ -78,14 +77,19 @@ namespace PMS.BLL
 
         public void Remove(params TX[] items)
         {
-            Parallel.ForEach(items, item =>
+            //Parallel.ForEach(items, item =>
+            //{
+            //    T record = ConvertToDal(item);
+            //    lock (Repository)
+            //    {
+            //        Repository.Delete(record);
+            //    }
+            //});
+            foreach (var item in items)
             {
                 T record = ConvertToDal(item);
-                lock (Repository)
-                {
-                    Repository.Delete(record);
-                }
-            });
+                Repository.Delete(record);
+            }
         }
 
         public void Update(TX item)
@@ -96,15 +100,15 @@ namespace PMS.BLL
 
         public void Update(params TX[] items)
         {
-            List<T> records = new List<T>();
-            Parallel.ForEach(items, item =>
-            {
-                T record = ConvertToDal(item);
-                lock (records)
-                {
-                    records.Add(record);
-                }
-            });
+            List<T> records = items.Select(item => ConvertToDal(item)).ToList();
+            //Parallel.ForEach(items, item =>
+            //{
+            //    T record = ConvertToDal(item);
+            //    lock (records)
+            //    {
+            //        records.Add(record);
+            //    }
+            //});
             Repository.Update(records);
         }
 

@@ -9,7 +9,7 @@ namespace  PMS.DAL.Seeds
     public class Condition:ISeed
     {  public void Seed(CodeFirstModel context)
         {
-               context.Condition.AddOrUpdate(x => x.Id,
+               context.Condition.AddOrUpdate(x => x.Name,
                 GetConditions()
                 );  
         }

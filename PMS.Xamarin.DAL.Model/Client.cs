@@ -8,13 +8,13 @@ namespace PMS.Xam.DAL.Model
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
 
-        public string LicenseNumber { get; set; }
+        public string IdentificationNumber { get; set; }
         
-        public IdentificationType IdentificationType { get; set; }
+        public virtual IdentificationType IdentificationType { get; set; }
         public string OtherIdentificationNumber { get; set; }
-         public IdentificationType OtherIdentificationType { get; set; }
+         public virtual IdentificationType OtherIdentificationType { get; set; }
             #region IDispose Region
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

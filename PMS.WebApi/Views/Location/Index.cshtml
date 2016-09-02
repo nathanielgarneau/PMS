@@ -1,0 +1,33 @@
+﻿@using GridMvc.Html
+@model System.Collections.Generic.IEnumerable<PMS.Xam.ViewModel.LocationViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="form-horizontal">
+    <h4>Location</h4>
+    <hr />
+    <p>
+        @Html.ActionLink("Create New", "Create", new { })
+    </p>
+    @(Html.Grid(Model).Columns(columns =>
+    {
+    columns.Add(x => x.Id);
+    columns.Add(x => x.Name);
+    columns.Add(x => x.Province.Name);
+    columns.Add().Encoded(false).Sanitized(false).SetWidth(20)
+      .RenderValueAs(x => @Html.ActionLink("Details", "Details", new { id = x.Id }));
+    columns.Add().Encoded(false).Sanitized(false).SetWidth(20)
+      .RenderValueAs(x => @Html.ActionLink("Edit", "Edit", new { id = x.Id }));
+    columns.Add().Encoded(false).Sanitized(false).SetWidth(20)
+      .RenderValueAs(x => @Html.ActionLink("Delete", "Delete", new { id = x.Id }));
+    })
+    .WithPaging(10)
+    .WithMultipleFilters()
+    .Filterable(true)
+    .Sortable(true)
+    .Selectable(false)
+    )
+</div>
