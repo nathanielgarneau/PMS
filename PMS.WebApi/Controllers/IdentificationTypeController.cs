@@ -13,7 +13,7 @@ namespace PMS.WebApi.Controllers
         private readonly BLL.IdentificationType _businessLayer = new BLL.IdentificationType();
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<IdentificationTypeViewModel> GetMany(params int[] ids)
+        public IEnumerable<IdentificationTypeViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

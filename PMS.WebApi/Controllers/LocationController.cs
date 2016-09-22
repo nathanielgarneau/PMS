@@ -13,7 +13,7 @@ namespace PMS.WebApi.Controllers
     {
         private readonly BLL.Location _businessLayer = new BLL.Location();
          [HttpGet]
-        [Route("Many")] public IEnumerable<LocationViewModel> GetMany(params int[] ids)
+        [Route("Many")] public IEnumerable<LocationViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

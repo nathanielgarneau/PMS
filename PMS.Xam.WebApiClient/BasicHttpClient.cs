@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using PMS.Xam.Model.Interfaces;
 using PMS.Xam.WebApiClient.Interfaces;
 
 namespace PMS.Xam.WebApiClient
 {
-    public class BasicHttpClient<T,TX> :  IApiClient<T,TX> where T : IEntity<TX>
+    public class BasicHttpClient<T, TX> : IApiClient<T, TX> where T : IEntity<TX>
     {
         public BasicHttpClient(string apiAddress)
         {
             ApiAddress = apiAddress;
+
         }
         private string ApiAddress { get; set; }
         private const string ManyAddress = "/Many";
@@ -34,14 +39,13 @@ namespace PMS.Xam.WebApiClient
             {
                 SetupHttpClient(client);
 
-                HttpResponseMessage response = await client.GetAsync(ApiAddress + "/" + id);
-                if (response.IsSuccessStatusCode)
-                {
-                    T viewModel = await response.Content.ReadAsAsync<T>();
-                    return viewModel;
-                }
+                 HttpResponseMessage response = await client.GetAsync(ApiAddress + "/" + id);
+                response.EnsureSuccessStatusCode();
+                if (!response.IsSuccessStatusCode) return default(T);
+
+                var viewModel = await response.Content.ReadAsAsync<T>();
+                return viewModel;
             }
-            return default(T);
         }
         private async Task<IEnumerable<T>> Get()
         {
@@ -49,14 +53,13 @@ namespace PMS.Xam.WebApiClient
             {
                 SetupHttpClient(client);
 
-                HttpResponseMessage response = await client.GetAsync(ApiAddress);
-                if (response.IsSuccessStatusCode)
-                {
-                    IEnumerable<T> viewModels = await response.Content.ReadAsAsync<IEnumerable<T>>();
-                    return viewModels;
-                }
+                var response = await client.GetAsync(ApiAddress);
+                response.EnsureSuccessStatusCode();
+                if (!response.IsSuccessStatusCode) return default(IEnumerable<T>);
+
+                var viewModels = await response.Content.ReadAsAsync<IEnumerable<T>>();
+                return viewModels;
             }
-            return default(IEnumerable<T>);
         }
 
         private async void Post(T viewModel)
@@ -66,7 +69,9 @@ namespace PMS.Xam.WebApiClient
                 SetupHttpClient(client);
 
                 MediaTypeFormatter formatter = new JsonMediaTypeFormatter();
+
                 HttpResponseMessage response = await client.PostAsync(ApiAddress, viewModel, formatter);
+                  response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
                     //Successful
@@ -81,8 +86,9 @@ namespace PMS.Xam.WebApiClient
                 SetupHttpClient(client);
 
 
-                HttpResponseMessage response = await client.PutAsJsonAsync(ApiAddress, viewModel);
-                if (response.IsSuccessStatusCode)
+                HttpResponseMessage response = await client.PutAsJsonAsync(ApiAddress+"/"+viewModel.Id, viewModel);
+                response.EnsureSuccessStatusCode();
+                 if (response.IsSuccessStatusCode)
                 {
                     //Successful
                 }
@@ -93,13 +99,14 @@ namespace PMS.Xam.WebApiClient
         {
             using (var client = new HttpClient())
             {
-               SetupHttpClient(client);
+                SetupHttpClient(client);
 
 
-               var request = new HttpRequestMessage(HttpMethod.Delete, ApiAddress);
-                request.Content = new ObjectContent(typeof(T),viewModel, new JsonMediaTypeFormatter());
-                var response = await client.SendAsync(request);
-                if (response.IsSuccessStatusCode)
+                var request = new HttpRequestMessage(HttpMethod.Delete, ApiAddress);
+                request.Content = new ObjectContent(typeof(T), viewModel, new JsonMediaTypeFormatter());
+                var response = await client.DeleteAsync(ApiAddress+"/"+viewModel.Id);
+                  response.EnsureSuccessStatusCode();
+               if (response.IsSuccessStatusCode)
                 {
                     //Successful
                 }
@@ -111,33 +118,55 @@ namespace PMS.Xam.WebApiClient
         {
             using (HttpClient client = new HttpClient())
             {
-               SetupHttpClient(client);
-
-                var request = new HttpRequestMessage(HttpMethod.Get, ApiAddress + ManyAddress)
+                SetupHttpClient(client);
+                var parameters = new List<KeyValuePair<string, object>>();
+                if (ids.Any())
                 {
-                    Content = new ObjectContent(typeof (TX[]), ids, new JsonMediaTypeFormatter())
-                };
-                var response = await client.SendAsync(request);
-                //HttpResponseMessage response = await client.GetAsync(ApiAddress + ManyAddress);
-                if (response.IsSuccessStatusCode)
-                {
-                    IEnumerable<T> viewModels = await response.Content.ReadAsAsync< IEnumerable<T>>();
-                    return viewModels;
+                    parameters.AddRange(ids.Select(id => new KeyValuePair<string, object>("ids", id)));
                 }
+                var request = new HttpRequestMessage(HttpMethod.Get,
+                    ApiAddress + ManyAddress + AsQueryString(parameters));
+                
+                var response = await client.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
+                if (!response.IsSuccessStatusCode) return default(IEnumerable<T>);
+
+                var viewModels = await response.Content.ReadAsAsync<IEnumerable<T>>();
+                return viewModels;
             }
-            return default(IEnumerable<T>);
         }
+
+        public string AsQueryString(IEnumerable<KeyValuePair<string, object>> parameters)
+        {
+            if (!parameters.Any())
+                return "";
+
+            var builder = new StringBuilder("?");
+
+            var separator = "";
+            foreach (var kvp in parameters.Where(kvp => kvp.Value != null))
+            {
+                builder.AppendFormat("{0}{1}={2}", separator, WebUtility.UrlEncode(kvp.Key),
+                    WebUtility.UrlEncode(kvp.Value.ToString()));
+
+                separator = "&";
+            }
+
+            return builder.ToString();
+        }
+
         private async void PostMany(params T[] viewModels)
         {
             using (var client = new HttpClient())
             {
-               SetupHttpClient(client);
+                SetupHttpClient(client);
 
                 MediaTypeFormatter formatter = new JsonMediaTypeFormatter();
                 HttpResponseMessage response = await client.PostAsync(ApiAddress, viewModels, formatter);
+                 response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
-                     //Successful
+                    //Successful
                 }
 
             }
@@ -150,9 +179,10 @@ namespace PMS.Xam.WebApiClient
 
 
                 var response = await client.PutAsJsonAsync(ApiAddress, viewModels);
-                if (response.IsSuccessStatusCode)
+                response.EnsureSuccessStatusCode();
+                 if (response.IsSuccessStatusCode)
                 {
-                     //Successful
+                    //Successful
                 }
 
             }
@@ -165,10 +195,11 @@ namespace PMS.Xam.WebApiClient
 
                 var request = new HttpRequestMessage(HttpMethod.Delete, ApiAddress)
                 {
-                    Content = new ObjectContent(typeof (IEnumerable<T>), viewModels, new JsonMediaTypeFormatter())
+                    Content = new ObjectContent(typeof(IEnumerable<T>), viewModels, new JsonMediaTypeFormatter())
                 };
                 var response = await client.SendAsync(request);
-                if (response.IsSuccessStatusCode)
+                  response.EnsureSuccessStatusCode();
+               if (response.IsSuccessStatusCode)
                 {
                     //Successful
                 }
@@ -179,10 +210,10 @@ namespace PMS.Xam.WebApiClient
         public List<T> GetList(params TX[] ids)
         {
             var response = GetMany(ids);
-            return response.Result.ToList();
+            return response.Result != null ? response.Result.ToList() : new List<T>();
         }
 
-        public T  GetSingle(TX id)
+        public T GetSingle(TX id)
         {
             var response = Get(id);
             return response.Result;
@@ -191,17 +222,17 @@ namespace PMS.Xam.WebApiClient
         public List<T> GetAll()
         {
             var response = Get();
-            return response.Result.ToList();
+            return response.Result != null ? response.Result.ToList() : new List<T>();
         }
 
         public void Add(params T[] items)
         {
-           PostMany(items);
+            PostMany(items);
         }
 
         public void Add(T item)
         {
-           Post(item);
+            Post(item);
         }
 
         public void Update(params T[] items)
@@ -218,10 +249,9 @@ namespace PMS.Xam.WebApiClient
         {
             DeleteMany(items);
         }
-
         public void Remove(T item)
         {
-           Delete(item);
+            Delete(item);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace PMS.WebApi.Controllers
         private readonly BLL.City _businessLayer = new BLL.City();
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<CityViewModel> GetMany(params int[] ids)
+        public IEnumerable<CityViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

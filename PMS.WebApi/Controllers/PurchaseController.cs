@@ -13,7 +13,7 @@ namespace PMS.WebApi.Controllers
     {
         private readonly BLL.Purchase _businessLayer = new BLL.Purchase();
         [HttpGet]
-        [Route("Many")] public IEnumerable<PurchaseViewModel> GetMany(params int[] ids)
+        [Route("Many")] public IEnumerable<PurchaseViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

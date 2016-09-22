@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
+using System.Web.Http.Results;
+using Newtonsoft.Json;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
@@ -14,7 +17,7 @@ namespace PMS.WebApi.Controllers
         private readonly BLL.Colour _businessLayer = new BLL.Colour();
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<ColourViewModel> GetMany(params int[] ids)
+        public IEnumerable<ColourViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

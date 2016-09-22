@@ -12,7 +12,7 @@ namespace PMS.WebApi.Controllers
     {
         private readonly BLL.Country _businessLayer = new BLL.Country();
           [HttpGet]
-        [Route("Many")] public IEnumerable<CountryViewModel> GetMany(params int[] ids)
+        [Route("Many")] public IEnumerable<CountryViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

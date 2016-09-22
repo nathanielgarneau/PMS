@@ -12,7 +12,7 @@ namespace PMS.WebApi.Controllers
     {
         private readonly BLL.Tag _businessLayer = new BLL.Tag();
           [HttpGet]
-        [Route("Many")]  public IEnumerable<TagViewModel> GetMany(params int[] ids)
+        [Route("Many")]  public IEnumerable<TagViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

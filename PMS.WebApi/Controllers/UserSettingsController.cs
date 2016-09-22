@@ -14,7 +14,7 @@ namespace PMS.WebApi.Controllers
         private readonly BLL.UserSettings _businessLayer = new BLL.UserSettings();
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<UserSettingsViewModel> GetMany(params int[] ids)
+        public IEnumerable<UserSettingsViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

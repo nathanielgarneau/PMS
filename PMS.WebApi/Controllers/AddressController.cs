@@ -16,7 +16,7 @@ namespace PMS.WebApi.Controllers
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("Many")]
-        public IEnumerable<AddressViewModel> GetMany(params int[] ids)
+        public IEnumerable<AddressViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

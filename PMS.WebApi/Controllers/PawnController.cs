@@ -12,7 +12,7 @@ namespace PMS.WebApi.Controllers
     {
         private readonly BLL.Pawn _businessLayer = new BLL.Pawn();
          [HttpGet]
-        [Route("Many")] public IEnumerable<PawnViewModel> GetMany(params int[] ids)
+        [Route("Many")] public IEnumerable<PawnViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

@@ -12,7 +12,7 @@ namespace PMS.WebApi.Controllers
     {
         private readonly BLL.Facility _businessLayer = new BLL.Facility();
              [HttpGet]
-        [Route("Many")] public IEnumerable<FacilityViewModel> GetMany(params int[] ids)
+        [Route("Many")] public IEnumerable<FacilityViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

@@ -19,12 +19,7 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
             InitializeComponent();
              Title = "Colour";
             ColourListView.ItemTemplate = new DataTemplate(typeof(ColourViewCell));
-            ColourListView.ItemsSource = new List<ColourViewModel>()
-            {
-                new ColourViewModel() {Code = "#0000ff", Id = 1, Name = "Blue"},
-                new ColourViewModel() {Code = "#ff0000", Id = 2, Name = "Red"},
-                new ColourViewModel() {Code = "#008000", Id = 3, Name = "Green"},
-            };
+            ColourListView.ItemsSource =  WebApiClient.ApiClient.Colour.GetAll();
             ColourListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             ColourListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout

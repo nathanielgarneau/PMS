@@ -13,7 +13,7 @@ namespace PMS.WebApi.Controllers
     {
         private readonly BLL.PaymentType _businessLayer = new BLL.PaymentType();
         [HttpGet]
-        [Route("Many")]  public IEnumerable<PaymentTypeViewModel> GetMany(params int[] ids)
+        [Route("Many")]  public IEnumerable<PaymentTypeViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

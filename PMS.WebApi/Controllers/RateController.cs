@@ -14,7 +14,7 @@ namespace PMS.WebApi.Controllers
         
         private readonly BLL.Rate _businessLayer = new BLL.Rate();
          [HttpGet]
-        [Route("Many")] public IEnumerable<RateViewModel> GetMany(params int[] ids)
+        [Route("Many")] public IEnumerable<RateViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

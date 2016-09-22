@@ -13,7 +13,7 @@ namespace PMS.WebApi.Controllers
     {
         private readonly BLL.Province _businessLayer = new BLL.Province();
         [HttpGet]
-        [Route("Many")]  public IEnumerable<ProvinceViewModel> GetMany(params int[] ids)
+        [Route("Many")]  public IEnumerable<ProvinceViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }

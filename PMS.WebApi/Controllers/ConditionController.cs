@@ -14,7 +14,7 @@ namespace PMS.WebApi.Controllers
         private readonly BLL.Condition _businessLayer = new BLL.Condition();
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<ConditionViewModel> GetMany(params int[] ids)
+        public IEnumerable<ConditionViewModel> GetMany([FromUri]params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
