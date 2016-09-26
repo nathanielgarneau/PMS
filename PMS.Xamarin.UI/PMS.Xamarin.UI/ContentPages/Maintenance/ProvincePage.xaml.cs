@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PMS.Xam.ViewModel;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
@@ -12,7 +12,25 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
     {
         public ProvincePage()
         {
-            InitializeComponent(); Title = "Province";
+            InitializeComponent();
+            Title = "Province";
+            ProvinceListView.ItemTemplate = new DataTemplate(typeof(ProvinceViewModel));
+            ProvinceListView.ItemsSource = WebApiClient.ApiClient.Province.GetAll();
+           
+         
+            ProvinceListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
+            ProvinceListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
+            var layout = new StackLayout
+            {
+                Spacing = 10,
+                VerticalOptions = LayoutOptions.End,
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.Start,
+                Children = {ProvinceListView}
+            };
+            Content = layout;
         }
+
+        public ListView ProvinceListView { get; set; }
     }
 }
