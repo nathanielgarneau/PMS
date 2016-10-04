@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
+using PMS.WebApi.Helpers;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers.ViewControllers
 {
-    public class TagController :Controller, Interfaces.IViewController<TagViewModel, int>
+    public class TagController : Controller, IViewController<TagViewModel, int>
     {
-             private readonly BLL.Tag _businessLayer = new BLL.Tag();
+        private readonly Tag _businessLayer = new Tag();
+        private readonly ViewBagHelper _viewBagHelper = new ViewBagHelper();
 
         public ActionResult Create()
         {

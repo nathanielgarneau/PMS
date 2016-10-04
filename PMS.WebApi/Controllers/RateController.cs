@@ -1,33 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
-     [RoutePrefix("api/Rate")]
-    public class RateController : ApiController, Interfaces.IApiController<RateViewModel,int>
+    [RoutePrefix("api/Rate")]
+    public class RateController : ApiController, IApiController<RateViewModel, int>
     {
-        
-        private readonly BLL.Rate _businessLayer = new BLL.Rate();
-         [HttpGet]
-        [Route("Many")] public IEnumerable<RateViewModel> GetMany([FromUri]params int[] ids)
+        private readonly Rate _businessLayer = new Rate();
+
+        [HttpGet]
+        [Route("Many")]
+        public IEnumerable<RateViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
-      [HttpGet]  public RateViewModel GetById(int id)
+
+        [HttpGet]
+        public RateViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
-       [HttpGet] public IEnumerable<RateViewModel> GetAll()
+
+        [HttpGet]
+        public IEnumerable<RateViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
-          [HttpPost]
-        [Route("Many")]   public HttpResponseMessage PostMany(params RateViewModel[] items)
+
+        [HttpPost]
+        [Route("Many")]
+        public HttpResponseMessage PostMany(params RateViewModel[] items)
         {
             try
             {
@@ -39,7 +46,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpPost] public HttpResponseMessage Post(RateViewModel item)
+
+        [HttpPost]
+        public HttpResponseMessage Post(RateViewModel item)
         {
             try
             {
@@ -51,8 +60,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpPut]
-        [Route("Many")]  public HttpResponseMessage PutMany(params RateViewModel[] items)
+
+        [HttpPut]
+        [Route("Many")]
+        public HttpResponseMessage PutMany(params RateViewModel[] items)
         {
             try
             {
@@ -64,7 +75,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-     [HttpPut]    public HttpResponseMessage Put(RateViewModel item)
+
+        [HttpPut]
+        public HttpResponseMessage Put(RateViewModel item)
         {
             try
             {
@@ -76,8 +89,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-         [HttpDelete]
-        [Route("Many")]  public HttpResponseMessage DeleteMany(params RateViewModel[] items)
+
+        [HttpDelete]
+        [Route("Many")]
+        public HttpResponseMessage DeleteMany(params RateViewModel[] items)
         {
             try
             {
@@ -89,7 +104,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-         [HttpDelete] public HttpResponseMessage Delete(RateViewModel item)
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(RateViewModel item)
         {
             try
             {

@@ -1,12 +1,11 @@
 ﻿using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
-
 namespace PMS.BLL
 {
-    public class Pawn :GenericBusinessLayer<Xam.DAL.Model.Pawn, PawnViewModel> 
+    public class Pawn : GenericBusinessLayer<Xam.DAL.Model.Pawn, PawnViewModel>
     {
-         public Pawn()
+        public Pawn()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.Pawn>();
         }
@@ -15,10 +14,12 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override PawnViewModel ConvertToViewModel(Xam.DAL.Model.Pawn model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.Pawn ToDal(PawnViewModel viewModel)
         {
             return new Xam.DAL.Model.Pawn
@@ -39,6 +40,7 @@ namespace PMS.BLL
                 StorageLocations = Location.ToDal(viewModel.StorageLocations)
             };
         }
+
         public static PawnViewModel ToViewModel(Xam.DAL.Model.Pawn model)
         {
             return new PawnViewModel

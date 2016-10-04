@@ -1,12 +1,11 @@
 ﻿using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
-
 namespace PMS.BLL
 {
-    public class Rate :GenericBusinessLayer<Xam.DAL.Model.Rate, RateViewModel> 
+    public class Rate : GenericBusinessLayer<Xam.DAL.Model.Rate, RateViewModel>
     {
-         public Rate()
+        public Rate()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.Rate>();
         }
@@ -15,10 +14,12 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override RateViewModel ConvertToViewModel(Xam.DAL.Model.Rate model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.Rate ToDal(RateViewModel viewModel)
         {
             return new Xam.DAL.Model.Rate
@@ -28,6 +29,7 @@ namespace PMS.BLL
                 Value = viewModel.Value
             };
         }
+
         public static RateViewModel ToViewModel(Xam.DAL.Model.Rate model)
         {
             return new RateViewModel

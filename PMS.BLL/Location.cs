@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
-
 namespace PMS.BLL
 {
-    public class Location :GenericBusinessLayer<Xam.DAL.Model.Location, LocationViewModel> 
+    public class Location : GenericBusinessLayer<Xam.DAL.Model.Location, LocationViewModel>
     {
-         public Location()
+        public Location()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.Location>();
         }
@@ -17,10 +16,12 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override LocationViewModel ConvertToViewModel(Xam.DAL.Model.Location model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.Location ToDal(LocationViewModel viewModel)
         {
             return new Xam.DAL.Model.Location
@@ -31,6 +32,7 @@ namespace PMS.BLL
                 Facility = Facility.ToDal(viewModel.Facility)
             };
         }
+
         public static LocationViewModel ToViewModel(Xam.DAL.Model.Location model)
         {
             return new LocationViewModel

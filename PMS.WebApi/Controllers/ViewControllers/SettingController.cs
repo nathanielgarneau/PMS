@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
+using PMS.WebApi.Helpers;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers.ViewControllers
 {
-    public class SettingController :Controller, Interfaces.IViewController<SettingViewModel, int>
+    public class SettingController : Controller, IViewController<SettingViewModel, int>
     {
-          private readonly BLL.Setting _businessLayer = new BLL.Setting();
+        private readonly Setting _businessLayer = new Setting();
+        private readonly ViewBagHelper _viewBagHelper = new ViewBagHelper();
 
         public ActionResult Create()
         {

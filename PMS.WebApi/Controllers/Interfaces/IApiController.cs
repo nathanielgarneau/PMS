@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.Http;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.WebApi.Controllers.Interfaces
@@ -12,29 +9,36 @@ namespace PMS.WebApi.Controllers.Interfaces
     public interface IApiController<T, in TX>
         where T : IEntity<TX>
     {
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("Many")]
+        [HttpGet]
+        [Route("Many")]
         IEnumerable<T> GetMany(params TX[] ids);
-          [System.Web.Http.HttpGet]
+
+        [HttpGet]
         T GetById(int id);
-            [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("All")]
+
+        [HttpGet]
+        [Route("All")]
         IEnumerable<T> GetAll();
-            [System.Web.Http.HttpPost]
-        [System.Web.Http.Route("Many")]
+
+        [HttpPost]
+        [Route("Many")]
         HttpResponseMessage PostMany(params T[] items);
 
-        [System.Web.Http.HttpPost]
+        [HttpPost]
         HttpResponseMessage Post(T item);
-             [System.Web.Http.HttpPut]
-        [System.Web.Http.Route("Many")]
+
+        [HttpPut]
+        [Route("Many")]
         HttpResponseMessage PutMany(params T[] items);
-          [System.Web.Http.HttpPut]
+
+        [HttpPut]
         HttpResponseMessage Put(T item);
-           [System.Web.Http.HttpDelete]
-        [System.Web.Http.Route("Many")]
+
+        [HttpDelete]
+        [Route("Many")]
         HttpResponseMessage DeleteMany(params T[] items);
-             [System.Web.Http.HttpDelete]
+
+        [HttpDelete]
         HttpResponseMessage Delete(T item);
     }
 }

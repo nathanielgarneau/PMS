@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.ViewModel;
+using PMS.Xam.WebApiClient;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
@@ -14,10 +10,10 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         {
             InitializeComponent();
             Title = "Tag";
-            TagListView.ItemTemplate = new DataTemplate(typeof(TagViewModel));
-            TagListView.ItemsSource = WebApiClient.ApiClient.Tag.GetAll();
-           
-         
+            TagListView.ItemTemplate = new DataTemplate(typeof (TagViewModel));
+            TagListView.ItemsSource = ApiClient.Tag.GetAll();
+
+
             TagListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             TagListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout

@@ -1,15 +1,13 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
-
 namespace PMS.BLL
 {
-    public class Tag :GenericBusinessLayer<Xam.DAL.Model.Tag, TagViewModel> 
+    public class Tag : GenericBusinessLayer<Xam.DAL.Model.Tag, TagViewModel>
     {
-         public Tag()
+        public Tag()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.Tag>();
         }
@@ -18,10 +16,12 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override TagViewModel ConvertToViewModel(Xam.DAL.Model.Tag model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.Tag ToDal(TagViewModel viewModel)
         {
             return new Xam.DAL.Model.Tag
@@ -30,6 +30,7 @@ namespace PMS.BLL
                 Name = viewModel.Name
             };
         }
+
         public static TagViewModel ToViewModel(Xam.DAL.Model.Tag model)
         {
             return new TagViewModel
@@ -41,11 +42,12 @@ namespace PMS.BLL
 
         internal static ICollection<TagViewModel> ToViewModel(ICollection<Xam.DAL.Model.Tag> models)
         {
-           return models.Select(model => ToViewModel(model)).ToList();
+            return models.Select(model => ToViewModel(model)).ToList();
         }
-         internal static ICollection<Xam.DAL.Model.Tag> ToDal(ICollection<TagViewModel> models)
+
+        internal static ICollection<Xam.DAL.Model.Tag> ToDal(ICollection<TagViewModel> models)
         {
-           return models.Select(model => ToDal(model)).ToList();
+            return models.Select(model => ToDal(model)).ToList();
         }
     }
 }

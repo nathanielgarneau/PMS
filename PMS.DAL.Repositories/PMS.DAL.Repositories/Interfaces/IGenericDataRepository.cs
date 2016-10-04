@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.DAL.Repositories.Interfaces
 {
-    public interface IGenericDataRepository<T> where T : class,  new()
+    public interface IGenericDataRepository<T> where T : class, new()
     {
+        void MarkUnchanged(IEntity<int> model, List<string> referencesToMarkUnchanged,
+            List<string> collectionsToMarkUnchanged);
+
         T Insert(T model);
         T Update(T model);
         IEnumerable<T> Insert(IEnumerable<T> model);
@@ -17,11 +15,11 @@ namespace PMS.DAL.Repositories.Interfaces
         bool Delete(T model);
         T Select(int pk);
         IEnumerable<T> SelectAll();
-        //List<T> GetAll(params Expression<Func<T, object>>[] navigationProperties);
-        //List<T> GetList(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties);
-        //T GetSingle(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties);
-        //void Add(params T[] items);
-        //void Update(params T[] items);
         //void Remove(params T[] items);
+        //void Update(params T[] items);
+        //void Add(params T[] items);
+        //T GetSingle(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties);
+        //List<T> GetList(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties);
+        //List<T> GetAll(params Expression<Func<T, object>>[] navigationProperties);
     }
 }

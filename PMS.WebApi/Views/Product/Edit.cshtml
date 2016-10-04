@@ -1,4 +1,6 @@
-﻿@model PMS.Xam.ViewModel.ProductViewModel
+﻿@using System
+@using System.Collections.Generic
+@model PMS.Xam.ViewModel.ProductViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -7,57 +9,60 @@
 <h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Put", "api/Product"))
 {
+    @Html.HttpMethodOverride(HttpVerbs.Put)
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Product</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <hr/>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Name, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
             </div>
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Description, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Description, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
             </div>
-            @Html.LabelFor(model => model.ProductType, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProductType, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProductType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ProductType, "", new { @class = "text-danger" })
+
+                @Html.DropDownListFor(model => model.ProductType.Id, (IEnumerable<SelectListItem>) ViewBag.ProductTypeSelectList, "Select a Type")
+
+                @Html.ValidationMessageFor(model => model.ProductType, "", new {@class = "text-danger"})
             </div>
-            @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Year, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Year, new {htmlAttributes = new {@class = "form-control", @min = 1902, @max = @DateTime.Now.Year + 1, @Value = ""}})
+                @Html.ValidationMessageFor(model => model.Year, "", new {@class = "text-danger"})
             </div>
-            @Html.LabelFor(model => model.Colour, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Colour, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Colour, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Colour, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.Colour.Id, (IEnumerable<SelectListItem>) ViewBag.ColourSelectList, "Select a Colour")
+                @Html.ValidationMessageFor(model => model.Colour, "", new {@class = "text-danger"})
             </div>
-            @Html.LabelFor(model => model.Conditions, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Conditions, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Conditions, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Conditions, "", new { @class = "text-danger" })
+                @Html.ListBoxFor(model => model.ConditionInts, (MultiSelectList) ViewBag.ConditionMultiSelectList, new {multiple = "multiple"})
+                @Html.ValidationMessageFor(model => model.Conditions, "", new {@class = "text-danger"})
             </div>
-            @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tags, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+                @Html.ListBoxFor(model => model.TagInts, (MultiSelectList) ViewBag.TagMultiSelectList, new {multiple = "multiple"})
+                @Html.ValidationMessageFor(model => model.Tags, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default"/>
             </div>
         </div>
     </div>

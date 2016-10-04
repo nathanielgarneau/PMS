@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
+using PMS.WebApi.Helpers;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers.ViewControllers
 {
-    public class ProductController :Controller, Interfaces.IViewController<ProductViewModel, int>
+    public class ProductController : Controller, IViewController<ProductViewModel, int>
     {
-            private readonly BLL.Product _businessLayer = new BLL.Product();
+        private readonly Product _businessLayer = new Product();
+        private readonly ViewBagHelper _viewBagHelper = new ViewBagHelper();
 
         public ActionResult Create()
         {
+            _viewBagHelper.ProductTypeSelectList(this);
+            _viewBagHelper.ColourSelectList(this);
+            _viewBagHelper.ConditionMultiSelectList(this);
+            _viewBagHelper.TagMultiSelectList(this);
             return View(new ProductViewModel());
         }
 
@@ -31,6 +34,10 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Edit(int id)
         {
+            _viewBagHelper.ProductTypeSelectList(this);
+            _viewBagHelper.ColourSelectList(this);
+            _viewBagHelper.ConditionMultiSelectList(this);
+            _viewBagHelper.TagMultiSelectList(this);
             var item = _businessLayer.Get(id);
             return View(item);
         }

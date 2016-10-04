@@ -1,41 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using PMS.DAL.Interfaces;
-using PMS.Xam.Model.Interfaces;
 
-namespace  PMS.DAL.Seeds
+namespace PMS.DAL.Seeds
 {
-    public class Condition:ISeed
-    {  public void Seed(CodeFirstModel context)
-        {
-               context.Condition.AddOrUpdate(x => x.Name,
-                GetConditions()
-                );  
-        }
-           private PMS.Xam.DAL.Model.Condition[] GetConditions( )
-        {
-            var conditions = new List<PMS.Xam.DAL.Model.Condition>();
-            foreach (var name in Conditions)
-            {
-                var condition = new PMS.Xam.DAL.Model.Condition()
-                {
-                    Name = name
-                };
-                conditions.Add(condition);
-            }
-             foreach (var name in VisualConditions)
-            {
-                var condition = new PMS.Xam.DAL.Model.Condition()
-                {
-                    Name = name
-                };
-                conditions.Add(condition);
-            }
-            return conditions.ToArray();
-        }
-
-        private readonly List<string> Conditions = new List<string>()
+    public class Condition : ISeed
+    {
+        private readonly List<string> Conditions = new List<string>
         {
             "New",
             "Manufacturer refurbished",
@@ -60,7 +31,7 @@ namespace  PMS.DAL.Seeds
             "Certified pre-owned"
         };
 
-        private readonly List<string> VisualConditions = new List<string>()
+        private readonly List<string> VisualConditions = new List<string>
         {
             "Dented",
             "Scratched",
@@ -68,5 +39,33 @@ namespace  PMS.DAL.Seeds
             "Painted"
         };
 
+        public void Seed(CodeFirstModel context)
+        {
+            context.Condition.AddOrUpdate(x => x.Name,
+                GetConditions()
+                );
+        }
+
+        private Xam.DAL.Model.Condition[] GetConditions()
+        {
+            var conditions = new List<Xam.DAL.Model.Condition>();
+            foreach (var name in Conditions)
+            {
+                var condition = new Xam.DAL.Model.Condition
+                {
+                    Name = name
+                };
+                conditions.Add(condition);
+            }
+            foreach (var name in VisualConditions)
+            {
+                var condition = new Xam.DAL.Model.Condition
+                {
+                    Name = name
+                };
+                conditions.Add(condition);
+            }
+            return conditions.ToArray();
+        }
     }
 }

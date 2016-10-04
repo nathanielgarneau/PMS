@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace PMS.BLL
+﻿namespace PMS.BLL
 {
     public class BusinessLayer
     {
-        public BusinessLayer()
-        {
-        }
-
         private Address _address { get; set; }
         public Address Address => _address ?? (_address = new Address());
 
@@ -31,7 +22,10 @@ namespace PMS.BLL
         private Facility _facility { get; set; }
         public Facility Facility => _facility ?? (_facility = new Facility());
         private IdentificationType _identificationType { get; set; }
-        public IdentificationType IdentificationType => _identificationType ?? (_identificationType = new IdentificationType());
+
+        public IdentificationType IdentificationType
+            => _identificationType ?? (_identificationType = new IdentificationType());
+
         private Location _location { get; set; }
         public Location Location => _location ?? (_location = new Location());
 
@@ -65,10 +59,7 @@ namespace PMS.BLL
         private User _user { get; set; }
         public User User => _user ?? (_user = new User());
 
-        private UserSettings _userSettings { get; set; }
-        public UserSettings UserSettings => _userSettings ?? (_userSettings = new UserSettings());
-
-
-
+        private UserSetting _userSetting { get; set; }
+        public UserSetting UserSetting => _userSetting ?? (_userSetting = new UserSetting());
     }
 }

@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using PMS.Xam.UI.ContentPages.Maintenance.Colour;
-using PMS.Xam.UI.Views.ViewCells;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.UI.Views.ViewCells;
+using PMS.Xam.WebApiClient;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
 {
     public partial class ColourPage : ContentPage
     {
-        ListView ColourListView = new ListView();
+        private readonly ListView ColourListView = new ListView();
+
         public ColourPage()
         {
             InitializeComponent();
-             Title = "Colour";
-            ColourListView.ItemTemplate = new DataTemplate(typeof(ColourViewCell));
-            ColourListView.ItemsSource =  WebApiClient.ApiClient.Colour.GetAll();
+            Title = "Colour";
+            ColourListView.ItemTemplate = new DataTemplate(typeof (ColourViewCell));
+            ColourListView.ItemsSource = ApiClient.Colour.GetAll();
             ColourListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             ColourListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout
@@ -32,7 +26,5 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
             };
             Content = layout;
         }
-
-     
     }
 }

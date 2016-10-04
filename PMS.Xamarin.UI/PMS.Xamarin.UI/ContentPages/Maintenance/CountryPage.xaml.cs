@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.ViewModel;
+using PMS.Xam.WebApiClient;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
@@ -13,11 +9,11 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         public CountryPage()
         {
             InitializeComponent();
-             Title = "Country";
-           CountryListView.ItemTemplate = new DataTemplate(typeof(CountryViewModel));
-            CountryListView.ItemsSource = WebApiClient.ApiClient.Country.GetAll();
-           
-         
+            Title = "Country";
+            CountryListView.ItemTemplate = new DataTemplate(typeof (CountryViewModel));
+            CountryListView.ItemsSource = ApiClient.Country.GetAll();
+
+
             CountryListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             CountryListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout

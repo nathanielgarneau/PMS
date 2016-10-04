@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
+using PMS.WebApi.Helpers;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers.ViewControllers
 {
-    public class UserSettingsController :Controller, Interfaces.IViewController<UserSettingsViewModel, int>
+    public class UserSettingsController : Controller, IViewController<UserSettingViewModel, int>
     {
-            private readonly BLL.UserSettings _businessLayer = new BLL.UserSettings();
+        private readonly UserSetting _businessLayer = new UserSetting();
+        private readonly ViewBagHelper _viewBagHelper = new ViewBagHelper();
 
         public ActionResult Create()
         {
-            return View(new UserSettingsViewModel());
+            return View(new UserSettingViewModel());
         }
 
         public ActionResult Delete(int id)

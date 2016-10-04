@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:installLocation="auto" android:versionName="1.0" package="PMS.PMS">
-	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="23" />
-	<uses-permission android:name="android.permission.CAMERA" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	<application android:icon="@drawable/icon" android:label="PMS"></application>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1"
+          android:installLocation="auto" android:versionName="1.0" package="PMS.PMS">
+  <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="23" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <application android:icon="@drawable/icon" android:label="PMS"></application>
 </manifest>

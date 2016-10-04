@@ -67,7 +67,7 @@
     <Compile Include="Setting.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UserSettings.cs" />
+    <Compile Include="UserSetting.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMS.DAL.Repositories\PMS.DAL.Repositories\PMS.DAL.Repositories.csproj">

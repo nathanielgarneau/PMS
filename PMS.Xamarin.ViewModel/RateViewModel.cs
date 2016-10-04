@@ -2,11 +2,10 @@
 
 namespace PMS.Xam.ViewModel
 {
-    public class RateViewModel:IEntity<int>
+    public class RateViewModel : IEntity<int>
     {
-        public int Id { get; set; }
         public string Name;
         public double Value;
-
+        public int Id { get; set; }
     }
 }

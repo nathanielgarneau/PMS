@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.Model.Interfaces;
-
-namespace PMS.Xam.WebApiClient.Test.Interfaces
+﻿namespace PMS.Xam.WebApiClient.Test.Interfaces
 {
     public interface ITestWebClient
     {

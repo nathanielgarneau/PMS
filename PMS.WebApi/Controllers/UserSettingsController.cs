@@ -1,36 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
-    [RoutePrefix("api/UserSettings")]
-    public class UserSettingsController : ApiController, Interfaces.IApiController<UserSettingsViewModel, int>
+    [RoutePrefix("api/UserSetting")]
+    public class UserSettingsController : ApiController, IApiController<UserSettingViewModel, int>
     {
-        private readonly BLL.UserSettings _businessLayer = new BLL.UserSettings();
+        private readonly UserSetting _businessLayer = new UserSetting();
+
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<UserSettingsViewModel> GetMany([FromUri]params int[] ids)
+        public IEnumerable<UserSettingViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
+
         [HttpGet]
-        public UserSettingsViewModel GetById(int id)
+        public UserSettingViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
+
         [HttpGet]
-        public IEnumerable<UserSettingsViewModel> GetAll()
+        public IEnumerable<UserSettingViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
+
         [HttpPost]
         [Route("Many")]
-        public HttpResponseMessage PostMany(params UserSettingsViewModel[] items)
+        public HttpResponseMessage PostMany(params UserSettingViewModel[] items)
         {
             try
             {
@@ -42,8 +46,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPost]
-        public HttpResponseMessage Post(UserSettingsViewModel item)
+        public HttpResponseMessage Post(UserSettingViewModel item)
         {
             try
             {
@@ -55,9 +60,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
         [Route("Many")]
-        public HttpResponseMessage PutMany(params UserSettingsViewModel[] items)
+        public HttpResponseMessage PutMany(params UserSettingViewModel[] items)
         {
             try
             {
@@ -69,8 +75,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
-        public HttpResponseMessage Put(UserSettingsViewModel item)
+        public HttpResponseMessage Put(UserSettingViewModel item)
         {
             try
             {
@@ -82,9 +89,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
         [Route("Many")]
-        public HttpResponseMessage DeleteMany(params UserSettingsViewModel[] items)
+        public HttpResponseMessage DeleteMany(params UserSettingViewModel[] items)
         {
             try
             {
@@ -96,8 +104,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
-        public HttpResponseMessage Delete(UserSettingsViewModel item)
+        public HttpResponseMessage Delete(UserSettingViewModel item)
         {
             try
             {

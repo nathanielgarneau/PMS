@@ -1,12 +1,12 @@
 ﻿using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
-
 namespace PMS.BLL
 {
-    public class IdentificationType :GenericBusinessLayer<Xam.DAL.Model.IdentificationType, IdentificationTypeViewModel> 
+    public class IdentificationType :
+        GenericBusinessLayer<Xam.DAL.Model.IdentificationType, IdentificationTypeViewModel>
     {
-         public IdentificationType()
+        public IdentificationType()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.IdentificationType>();
         }
@@ -15,10 +15,12 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override IdentificationTypeViewModel ConvertToViewModel(Xam.DAL.Model.IdentificationType model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.IdentificationType ToDal(IdentificationTypeViewModel viewModel)
         {
             return new Xam.DAL.Model.IdentificationType
@@ -27,6 +29,7 @@ namespace PMS.BLL
                 Name = viewModel.Name
             };
         }
+
         public static IdentificationTypeViewModel ToViewModel(Xam.DAL.Model.IdentificationType model)
         {
             return new IdentificationTypeViewModel

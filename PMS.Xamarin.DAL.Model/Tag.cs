@@ -1,31 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.Xam.DAL.Model
 {
-    public class Tag:IEntity<int>,IDisposable
+    public class Tag : IEntity<int>, IDisposable
     {
-         public int Id { get; set; }
         public string Name { get; set; }
-            #region IDispose Region
-        private bool disposed = false;
+        public virtual ICollection<Product> Products { get; set; }
+        public int Id { get; set; }
+
+        #region IDispose Region
+
+        private bool disposed;
+
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
                     //Context.Dispose();
                 }
             }
-            this.disposed = true;
-
+            disposed = true;
         }
+
         public void Dispose()
         {
             Dispose(true);
-            System.GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
+
         #endregion
     }
 }

@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
+using PMS.WebApi.Helpers;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers.ViewControllers
 {
-    public class PawnController :Controller, Interfaces.IViewController<PawnViewModel, int>
+    public class PawnController : Controller, IViewController<PawnViewModel, int>
     {
-            private readonly BLL.Pawn _businessLayer = new BLL.Pawn();
+        private readonly Pawn _businessLayer = new Pawn();
+        private readonly ViewBagHelper _viewBagHelper = new ViewBagHelper();
 
         public ActionResult Create()
         {

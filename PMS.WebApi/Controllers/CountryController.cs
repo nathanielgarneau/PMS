@@ -1,31 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
-{ [RoutePrefix("api/Country")]
-    public class CountryController : ApiController, Interfaces.IApiController<CountryViewModel,int>
+{
+    [RoutePrefix("api/Country")]
+    public class CountryController : ApiController, IApiController<CountryViewModel, int>
     {
-        private readonly BLL.Country _businessLayer = new BLL.Country();
-          [HttpGet]
-        [Route("Many")] public IEnumerable<CountryViewModel> GetMany([FromUri]params int[] ids)
+        private readonly Country _businessLayer = new Country();
+
+        [HttpGet]
+        [Route("Many")]
+        public IEnumerable<CountryViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
-      [HttpGet]   public CountryViewModel GetById(int id)
+
+        [HttpGet]
+        public CountryViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
-       [HttpGet]  public IEnumerable<CountryViewModel> GetAll()
+
+        [HttpGet]
+        public IEnumerable<CountryViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
-           [HttpPost]
-        [Route("Many")]      public HttpResponseMessage PostMany(params CountryViewModel[] items)
+
+        [HttpPost]
+        [Route("Many")]
+        public HttpResponseMessage PostMany(params CountryViewModel[] items)
         {
             try
             {
@@ -37,7 +46,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-        [HttpPost]  public HttpResponseMessage Post(CountryViewModel item)
+
+        [HttpPost]
+        public HttpResponseMessage Post(CountryViewModel item)
         {
             try
             {
@@ -49,8 +60,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-      [HttpPut]
-        [Route("Many")]   public HttpResponseMessage PutMany(params CountryViewModel[] items)
+
+        [HttpPut]
+        [Route("Many")]
+        public HttpResponseMessage PutMany(params CountryViewModel[] items)
         {
             try
             {
@@ -62,7 +75,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-         [HttpPut]  public HttpResponseMessage Put(CountryViewModel item)
+
+        [HttpPut]
+        public HttpResponseMessage Put(CountryViewModel item)
         {
             try
             {
@@ -74,8 +89,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpDelete]
-        [Route("Many")]   public HttpResponseMessage DeleteMany(params CountryViewModel[] items)
+
+        [HttpDelete]
+        [Route("Many")]
+        public HttpResponseMessage DeleteMany(params CountryViewModel[] items)
         {
             try
             {
@@ -87,7 +104,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpDelete]  public HttpResponseMessage Delete(CountryViewModel item)
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(CountryViewModel item)
         {
             try
             {

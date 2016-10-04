@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.ViewModel;
+using PMS.Xam.WebApiClient;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
@@ -13,11 +9,11 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         public IdentificationTypePage()
         {
             InitializeComponent();
-             Title = "Identification Type";
-            IdentificationTypeListView.ItemTemplate = new DataTemplate(typeof(IdentificationTypeViewModel));
-            IdentificationTypeListView.ItemsSource = WebApiClient.ApiClient.IdentificationType.GetAll();
-           
-         
+            Title = "Identification Type";
+            IdentificationTypeListView.ItemTemplate = new DataTemplate(typeof (IdentificationTypeViewModel));
+            IdentificationTypeListView.ItemsSource = ApiClient.IdentificationType.GetAll();
+
+
             IdentificationTypeListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             IdentificationTypeListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout

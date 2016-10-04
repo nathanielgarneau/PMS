@@ -1,33 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
-     [RoutePrefix("api/Condition")]
-    public class ConditionController : ApiController, Interfaces.IApiController<ConditionViewModel, int>
+    [RoutePrefix("api/Condition")]
+    public class ConditionController : ApiController, IApiController<ConditionViewModel, int>
     {
-        private readonly BLL.Condition _businessLayer = new BLL.Condition();
+        private readonly Condition _businessLayer = new Condition();
+
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<ConditionViewModel> GetMany([FromUri]params int[] ids)
+        public IEnumerable<ConditionViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
+
         [HttpGet]
         public ConditionViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
+
         [HttpGet]
         public IEnumerable<ConditionViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
+
         [HttpPost]
         [Route("Many")]
         public HttpResponseMessage PostMany(params ConditionViewModel[] items)
@@ -42,6 +46,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPost]
         public HttpResponseMessage Post(ConditionViewModel item)
         {
@@ -55,6 +60,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
         [Route("Many")]
         public HttpResponseMessage PutMany(params ConditionViewModel[] items)
@@ -83,6 +89,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
         [Route("Many")]
         public HttpResponseMessage DeleteMany(params ConditionViewModel[] items)
@@ -97,6 +104,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
         public HttpResponseMessage Delete(ConditionViewModel item)
         {

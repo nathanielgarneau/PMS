@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
+using PMS.WebApi.Helpers;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers.ViewControllers
 {
-    public class IdentificationTypeController :Controller, Interfaces.IViewController<IdentificationTypeViewModel, int>
+    public class IdentificationTypeController : Controller, IViewController<IdentificationTypeViewModel, int>
     {
-          private readonly BLL.IdentificationType _businessLayer = new BLL.IdentificationType();
+        private readonly IdentificationType _businessLayer = new IdentificationType();
+        private readonly ViewBagHelper _viewBagHelper = new ViewBagHelper();
 
         public ActionResult Create()
         {

@@ -1,18 +1,18 @@
 ﻿using System;
 using PMS.DAL.Interfaces;
-using PMS.Xam.Model.Interfaces;
 
-namespace  PMS.DAL.Seeds
+namespace PMS.DAL.Seeds
 {
-    public class Facility:ISeed {  public void Seed(CodeFirstModel context)
+    public class Facility : ISeed
+    {
+        public void Seed(CodeFirstModel context)
         {
-           try
+            try
             {
                 throw new NotImplementedException();
             }
-            catch(NotImplementedException e)
+            catch (NotImplementedException e)
             {
-                
             }
         }
     }

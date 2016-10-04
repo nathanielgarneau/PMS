@@ -2,10 +2,10 @@
 
 namespace PMS.Xam.ViewModel
 {
-    public class CityViewModel:IEntity<int>
+    public class CityViewModel : IEntity<int>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public ProvinceViewModel Province { get; set; }
+        public int Id { get; set; }
     }
 }

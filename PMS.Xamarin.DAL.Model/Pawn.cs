@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.Xam.DAL.Model
 {
-    public class Pawn : IEntity<int>,IDisposable
+    public class Pawn : IEntity<int>, IDisposable
     {
-        public int Id { get; set; }
         public virtual Client Client { get; set; }
         public virtual ICollection<Product> Items { get; set; }
         public virtual ICollection<Note> Notes { get; set; }
@@ -27,27 +22,32 @@ namespace PMS.Xam.DAL.Model
         public virtual ICollection<Payment> Payments { get; set; }
         //public bool PickedUp//TODO:Add to viewmodel
         public DateTime? ClosedDate { get; set; }
+        public int Id { get; set; }
         //public bool Closed { get; set; }//TODO: add to viewmodel
         //public double PurchaseCost{get;set;}//TODO: add to viewmodel
-            #region IDispose Region
-        private bool disposed = false;
+
+        #region IDispose Region
+
+        private bool disposed;
+
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
                     //Context.Dispose();
                 }
             }
-            this.disposed = true;
-
+            disposed = true;
         }
+
         public void Dispose()
         {
             Dispose(true);
-            System.GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
+
         #endregion
     }
 }

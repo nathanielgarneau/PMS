@@ -1,9 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Xamarin.UITest;
-using Xamarin.UITest.Queries;
 using Xamarin.UITest.Android;
 
 namespace PMS.Xam.UI.Droid.Test
@@ -11,8 +7,6 @@ namespace PMS.Xam.UI.Droid.Test
     [TestFixture]
     public class Tests
     {
-        AndroidApp app;
-
         [SetUp]
         public void BeforeEachTest()
         {
@@ -28,6 +22,8 @@ namespace PMS.Xam.UI.Droid.Test
                 .StartApp();
         }
 
+        private AndroidApp app;
+
         [Test]
         public void AppLaunches()
         {
@@ -35,4 +31,3 @@ namespace PMS.Xam.UI.Droid.Test
         }
     }
 }
-

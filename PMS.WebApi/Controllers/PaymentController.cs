@@ -1,32 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
-     [RoutePrefix("api/Payment")]
-    public class PaymentController : ApiController, Interfaces.IApiController<PaymentViewModel,int>
+    [RoutePrefix("api/Payment")]
+    public class PaymentController : ApiController, IApiController<PaymentViewModel, int>
     {
-        private readonly BLL.Payment _businessLayer = new BLL.Payment();
-       [HttpGet]
-        [Route("Many")] public IEnumerable<PaymentViewModel> GetMany([FromUri]params int[] ids)
+        private readonly Payment _businessLayer = new Payment();
+
+        [HttpGet]
+        [Route("Many")]
+        public IEnumerable<PaymentViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
-     [HttpGet]   public PaymentViewModel GetById(int id)
+
+        [HttpGet]
+        public PaymentViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
-       [HttpGet] public IEnumerable<PaymentViewModel> GetAll()
+
+        [HttpGet]
+        public IEnumerable<PaymentViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
-          [HttpPost]
-        [Route("Many")]   public HttpResponseMessage PostMany(params PaymentViewModel[] items)
+
+        [HttpPost]
+        [Route("Many")]
+        public HttpResponseMessage PostMany(params PaymentViewModel[] items)
         {
             try
             {
@@ -38,7 +46,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpPost] public HttpResponseMessage Post(PaymentViewModel item)
+
+        [HttpPost]
+        public HttpResponseMessage Post(PaymentViewModel item)
         {
             try
             {
@@ -50,8 +60,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-           [HttpPut]
-        [Route("Many")]  public HttpResponseMessage PutMany(params PaymentViewModel[] items)
+
+        [HttpPut]
+        [Route("Many")]
+        public HttpResponseMessage PutMany(params PaymentViewModel[] items)
         {
             try
             {
@@ -63,7 +75,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-        [HttpPut]  public HttpResponseMessage Put(PaymentViewModel item)
+
+        [HttpPut]
+        public HttpResponseMessage Put(PaymentViewModel item)
         {
             try
             {
@@ -75,8 +89,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpDelete]
-        [Route("Many")]   public HttpResponseMessage DeleteMany(params PaymentViewModel[] items)
+
+        [HttpDelete]
+        [Route("Many")]
+        public HttpResponseMessage DeleteMany(params PaymentViewModel[] items)
         {
             try
             {
@@ -88,7 +104,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-          [HttpDelete]public HttpResponseMessage Delete(PaymentViewModel item)
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(PaymentViewModel item)
         {
             try
             {

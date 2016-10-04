@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.ViewModel;
+using PMS.Xam.WebApiClient;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
@@ -13,11 +9,11 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         public PaymentTypePage()
         {
             InitializeComponent();
-             Title = "Payment Type";
-            PaymentTypeListView.ItemTemplate = new DataTemplate(typeof(PaymentTypeViewModel));
-            PaymentTypeListView.ItemsSource = WebApiClient.ApiClient.PaymentType.GetAll();
-           
-         
+            Title = "Payment Type";
+            PaymentTypeListView.ItemTemplate = new DataTemplate(typeof (PaymentTypeViewModel));
+            PaymentTypeListView.ItemsSource = ApiClient.PaymentType.GetAll();
+
+
             PaymentTypeListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             PaymentTypeListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout

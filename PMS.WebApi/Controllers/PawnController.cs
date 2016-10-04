@@ -1,31 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
-{ [RoutePrefix("api/Pawn")]
-    public class PawnController : ApiController, Interfaces.IApiController<PawnViewModel,int>
+{
+    [RoutePrefix("api/Pawn")]
+    public class PawnController : ApiController, IApiController<PawnViewModel, int>
     {
-        private readonly BLL.Pawn _businessLayer = new BLL.Pawn();
-         [HttpGet]
-        [Route("Many")] public IEnumerable<PawnViewModel> GetMany([FromUri]params int[] ids)
+        private readonly Pawn _businessLayer = new Pawn();
+
+        [HttpGet]
+        [Route("Many")]
+        public IEnumerable<PawnViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
-       [HttpGet]  public PawnViewModel GetById(int id)
+
+        [HttpGet]
+        public PawnViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
-        [HttpGet] public IEnumerable<PawnViewModel> GetAll()
+
+        [HttpGet]
+        public IEnumerable<PawnViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
-              [HttpPost]
-        [Route("Many")]  public HttpResponseMessage PostMany(params PawnViewModel[] items)
+
+        [HttpPost]
+        [Route("Many")]
+        public HttpResponseMessage PostMany(params PawnViewModel[] items)
         {
             try
             {
@@ -37,7 +46,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-        [HttpPost]  public HttpResponseMessage Post(PawnViewModel item)
+
+        [HttpPost]
+        public HttpResponseMessage Post(PawnViewModel item)
         {
             try
             {
@@ -49,8 +60,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
-        [Route("Many")]   public HttpResponseMessage PutMany(params PawnViewModel[] items)
+        [Route("Many")]
+        public HttpResponseMessage PutMany(params PawnViewModel[] items)
         {
             try
             {
@@ -62,7 +75,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpPut]  public HttpResponseMessage Put(PawnViewModel item)
+
+        [HttpPut]
+        public HttpResponseMessage Put(PawnViewModel item)
         {
             try
             {
@@ -74,8 +89,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpDelete]
-        [Route("Many")]    public HttpResponseMessage DeleteMany(params PawnViewModel[] items)
+
+        [HttpDelete]
+        [Route("Many")]
+        public HttpResponseMessage DeleteMany(params PawnViewModel[] items)
         {
             try
             {
@@ -87,7 +104,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-        [HttpDelete]  public HttpResponseMessage Delete(PawnViewModel item)
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(PawnViewModel item)
         {
             try
             {

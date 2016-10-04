@@ -2,105 +2,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @* These references are required for grid.mvc *@
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"> </script>
-    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css"/>
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
     @* These references are required for grid.mvc *@
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("PMS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <style>
-                .dropdown-content {
-                    display: none;
-                    position: absolute;
-                    background-color: #f9f9f9;
-                    /*min-width: 160px;*/
-                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-                }
-
-                    .dropdown-content a {
-                        color: black;
-                        padding: 12px 16px;
-                        text-decoration: none;
-                        display: block;
-                        text-align: left;
-                    }
-
-                        .dropdown-content a:hover {
-                            background-color: #f1f1f1;
-                        }
-
-                .dropdown:hover .dropdown-content {
-                    display: block;
-                }
-            </style>
-            <div class="navbar-collapse collapse">
-                <ul id="nav" class="nav navbar-nav">
-                    <li>@Html.ActionLink("Client", "Index", "Client")</li>
-                    <li>@Html.ActionLink("Payment", "Index", "Payment")</li>
-                    <li>@Html.ActionLink("Pawn", "Index", "Pawn")</li>
-                    <li>@Html.ActionLink("Purchase", "Index", "Purchase")</li>
-                    <li>@Html.ActionLink("Product", "Index", "Product")</li>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">Maintenance</a>
-                        <div class="dropdown-content">
-                            @Html.ActionLink("Address", "Index", "Address")
-                            @Html.ActionLink("City", "Index", "City")
-                            @Html.ActionLink("Client", "Index", "Client")
-                            @Html.ActionLink("Colour", "Index", "Colour")
-                            @Html.ActionLink("Condition", "Index", "Condition")
-                            @Html.ActionLink("Country", "Index", "Country")
-                            @Html.ActionLink("Facility", "Index", "Facility")
-                            @Html.ActionLink("IdentificationType", "Index", "IdentificationType")
-                            @Html.ActionLink("Location", "Index", "Location")
-                            @Html.ActionLink("Note", "Index", "Note")
-                            @Html.ActionLink("Pawn", "Index", "Pawn")
-                            @Html.ActionLink("Payment", "Index", "Payment")
-                            @Html.ActionLink("PaymentType", "Index", "PaymentType")
-                            @Html.ActionLink("Product", "Index", "Product")
-                            @Html.ActionLink("ProductType", "Index", "ProductType")
-                            @Html.ActionLink("Province", "Index", "Province")
-                            @Html.ActionLink("Purchase", "Index", "Purchase")
-                            @Html.ActionLink("Rate", "Index", "Rate")
-                            @Html.ActionLink("Setting", "Index", "Setting")
-                            @Html.ActionLink("Tag", "Index", "Tag")
-                            @Html.ActionLink("User", "Index", "User")
-                            @Html.ActionLink("UserSettings", "Index", "UserSettings")
-                        </div>
-                    </li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-
-                </ul>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("PMS", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         </div>
+        <style>
+            .dropdown-content {
+                background-color: #f9f9f9;
+                /*min-width: 160px;*/
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                display: none;
+                position: absolute;
+            }
+
+            .dropdown-content a {
+                color: black;
+                display: block;
+                padding: 12px 16px;
+                text-align: left;
+                text-decoration: none;
+            }
+
+            .dropdown-content a:hover { background-color: #f1f1f1; }
+
+            .dropdown:hover .dropdown-content { display: block; }
+        </style>
+        <div class="navbar-collapse collapse">
+            <ul id="nav" class="nav navbar-nav">
+                <li>@Html.ActionLink("Client", "Index", "Client")</li>
+                <li>@Html.ActionLink("Payment", "Index", "Payment")</li>
+                <li>@Html.ActionLink("Pawn", "Index", "Pawn")</li>
+                <li>@Html.ActionLink("Purchase", "Index", "Purchase")</li>
+                <li>@Html.ActionLink("Product", "Index", "Product")</li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Maintenance</a>
+                    <div class="dropdown-content">
+                        @Html.ActionLink("Address", "Index", "Address")
+                        @Html.ActionLink("City", "Index", "City")
+                        @Html.ActionLink("Client", "Index", "Client")
+                        @Html.ActionLink("Colour", "Index", "Colour")
+                        @Html.ActionLink("Condition", "Index", "Condition")
+                        @Html.ActionLink("Country", "Index", "Country")
+                        @Html.ActionLink("Facility", "Index", "Facility")
+                        @Html.ActionLink("IdentificationType", "Index", "IdentificationType")
+                        @Html.ActionLink("Location", "Index", "Location")
+                        @Html.ActionLink("Note", "Index", "Note")
+                        @Html.ActionLink("Pawn", "Index", "Pawn")
+                        @Html.ActionLink("Payment", "Index", "Payment")
+                        @Html.ActionLink("PaymentType", "Index", "PaymentType")
+                        @Html.ActionLink("Product", "Index", "Product")
+                        @Html.ActionLink("ProductType", "Index", "ProductType")
+                        @Html.ActionLink("Province", "Index", "Province")
+                        @Html.ActionLink("Purchase", "Index", "Purchase")
+                        @Html.ActionLink("Rate", "Index", "Rate")
+                        @Html.ActionLink("Setting", "Index", "Setting")
+                        @Html.ActionLink("Tag", "Index", "Tag")
+                        @Html.ActionLink("User", "Index", "User")
+                        @Html.ActionLink("UserSetting", "Index", "UserSetting")
+                    </div>
+                </li>
+                <li>@Html.ActionLink("API", "Index", "Help", new {area = ""}, null)</li>
+
+            </ul>
+        </div>
+    </div>
 </div><br/>
-        <div class="container body-content">
-            @RenderBody()
-           
-            <footer>
-                <hr />
-                <p>&copy; @DateTime.Now.Year - PMS</p>
-            </footer>
-        </div>
-        
- 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+<div class="container body-content">
+    @RenderBody()
+
+    <footer>
+        <hr/>
+        <p>&copy; @DateTime.Now.Year - PMS</p>
+    </footer>
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", false)
 </body>
 </html>

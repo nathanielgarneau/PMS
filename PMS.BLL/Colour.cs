@@ -1,41 +1,42 @@
-﻿using System;
-using PMS.DAL.Repositories;
+﻿using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
-
 
 namespace PMS.BLL
 {
-    public class Colour :GenericBusinessLayer<PMS.Xam.DAL.Model.Colour, ColourViewModel> 
+    public class Colour : GenericBusinessLayer<Xam.DAL.Model.Colour, ColourViewModel>
     {
-         public Colour()
+        public Colour()
         {
-            Repository = new GenericDataRepository<PMS.Xam.DAL.Model.Colour>();
+            Repository = new GenericDataRepository<Xam.DAL.Model.Colour>();
         }
 
-        public override PMS.Xam.DAL.Model.Colour ConvertToDal(ColourViewModel viewModel)
+        public override Xam.DAL.Model.Colour ConvertToDal(ColourViewModel viewModel)
         {
             return ToDal(viewModel);
         }
-        public override ColourViewModel ConvertToViewModel(PMS.Xam.DAL.Model.Colour model)
+
+        public override ColourViewModel ConvertToViewModel(Xam.DAL.Model.Colour model)
         {
             return ToViewModel(model);
         }
-        public static PMS.Xam.DAL.Model.Colour ToDal(ColourViewModel viewModel)
+
+        public static Xam.DAL.Model.Colour ToDal(ColourViewModel viewModel)
         {
-            return new PMS.Xam.DAL.Model.Colour
+            return new Xam.DAL.Model.Colour
             {
                 Id = viewModel.Id,
                 Name = viewModel.Name,
                 Code = viewModel.Code
             };
         }
-        public static ColourViewModel ToViewModel(PMS.Xam.DAL.Model.Colour model)
+
+        public static ColourViewModel ToViewModel(Xam.DAL.Model.Colour model)
         {
             return new ColourViewModel
             {
                 Id = model.Id,
                 Name = model.Name,
-               Code = model.Code
+                Code = model.Code
             };
         }
     }

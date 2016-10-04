@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.Xam.ViewModel
 {
-    public class UserViewModel:IEntity<int>
+    public class UserViewModel : IEntity<int>
     {
-        public int Id { get; set; }
         public string Username { get; set; }
-        
+
         public int Pin { get; set; }
         public string Password { get; set; }
 
-        public ICollection<UserSettingsViewModel> UserSettings
-        {
-            get;
-            set;
-        }
+        public ICollection<UserSettingViewModel> UserSettings { get; set; }
+
+        public int Id { get; set; }
     }
 }

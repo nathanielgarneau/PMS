@@ -1,12 +1,11 @@
 ﻿using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
-
 namespace PMS.BLL
 {
-    public class Purchase :GenericBusinessLayer<Xam.DAL.Model.Purchase, PurchaseViewModel> 
+    public class Purchase : GenericBusinessLayer<Xam.DAL.Model.Purchase, PurchaseViewModel>
     {
-         public Purchase()
+        public Purchase()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.Purchase>();
         }
@@ -15,10 +14,12 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override PurchaseViewModel ConvertToViewModel(Xam.DAL.Model.Purchase model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.Purchase ToDal(PurchaseViewModel viewModel)
         {
             return new Xam.DAL.Model.Purchase
@@ -35,6 +36,7 @@ namespace PMS.BLL
                 SaleableDate = viewModel.SaleableDate
             };
         }
+
         public static PurchaseViewModel ToViewModel(Xam.DAL.Model.Purchase model)
         {
             return new PurchaseViewModel

@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace PMS.WebApi.App_Start
 {
-    public class CustomViewEngine: RazorViewEngine 
-{
-    public CustomViewEngine()
+    public class CustomViewEngine : RazorViewEngine
     {
-        var viewLocations =  new[] {   
-            "~/Views/{1}/{0}.cshtml",  
-            "~/Views/Shared/{0}.cshtml"
-            // etc
-        };
+        public CustomViewEngine()
+        {
+            var viewLocations = new[]
+            {
+                "~/Views/{1}/{0}.cshtml",
+                "~/Views/Shared/{0}.cshtml"
+                // etc
+            };
 
-        this.PartialViewLocationFormats = viewLocations;
-        this.ViewLocationFormats = viewLocations;
+            PartialViewLocationFormats = viewLocations;
+            ViewLocationFormats = viewLocations;
+        }
     }
-}
 }

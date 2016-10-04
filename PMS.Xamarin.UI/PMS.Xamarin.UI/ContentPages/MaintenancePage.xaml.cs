@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PMS.Xam.UI.ContentPages.Maintenance;
 using Xamarin.Forms;
 
@@ -10,7 +7,6 @@ namespace PMS.Xam.UI.ContentPages
 {
     public partial class MaintenancePage : ContentPage
     {
-        private ListView NavigationListView = new ListView();
         private const string Address = "Address";
         private const string City = "City";
         private const string Client = "Client";
@@ -24,7 +20,7 @@ namespace PMS.Xam.UI.ContentPages
         private const string Pawn = "Pawn";
         private const string Payment = "Payment";
         private const string PaymentType = "Payment Type";
-        private const string Product ="Product";
+        private const string Product = "Product";
         private const string ProductType = "Product Type";
         private const string Province = "Province";
         private const string Purchase = "Purchase";
@@ -32,14 +28,15 @@ namespace PMS.Xam.UI.ContentPages
         private const string Setting = "Setting";
         private const string Tag = "Tag";
         private const string User = "User";
-        private const string UserSettings = "User Settings";
+        private const string UserSetting = "UserSetting";
 
         private const bool Animate = true;
+        private readonly ListView NavigationListView = new ListView();
 
         public MaintenancePage()
         {
             InitializeComponent();
-             Title = "Maintenance";
+            Title = "Maintenance";
             NavigationListView.ItemsSource = new List<string>
             {
                 Address,
@@ -63,7 +60,7 @@ namespace PMS.Xam.UI.ContentPages
                 Setting,
                 Tag,
                 User,
-                UserSettings
+                UserSetting
             };
             NavigationListView.ItemSelected += NavigationListView_ItemSelected;
             var layout = new StackLayout
@@ -147,18 +144,17 @@ namespace PMS.Xam.UI.ContentPages
                     case User:
                         Navigation.PushAsync(new UserPage(), Animate);
                         break;
-                    case UserSettings:
-                        Navigation.PushAsync(new UserSettingsPage(), Animate);
+                    case UserSetting:
+                        Navigation.PushAsync(new UserSettingPage(), Animate);
                         break;
                     default:
                         throw new NotImplementedException();
                 }
-                 NavigationListView.SelectedItem = null;
+                NavigationListView.SelectedItem = null;
             }
             catch
             {
             }
         }
-        
     }
 }

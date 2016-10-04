@@ -1,33 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
     [RoutePrefix("api/City")]
-    public class CityController : ApiController, Interfaces.IApiController<CityViewModel, int>
+    public class CityController : ApiController, IApiController<CityViewModel, int>
     {
-        private readonly BLL.City _businessLayer = new BLL.City();
+        private readonly City _businessLayer = new City();
+
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<CityViewModel> GetMany([FromUri]params int[] ids)
+        public IEnumerable<CityViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
+
         [HttpGet]
         public CityViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
+
         [HttpGet]
         public IEnumerable<CityViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
+
         [HttpPost]
         [Route("Many")]
         public HttpResponseMessage PostMany(params CityViewModel[] items)
@@ -42,6 +46,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPost]
         public HttpResponseMessage Post(CityViewModel item)
         {
@@ -55,6 +60,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
         [Route("Many")]
         public HttpResponseMessage PutMany(params CityViewModel[] items)
@@ -69,6 +75,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
         public HttpResponseMessage Put(CityViewModel item)
         {
@@ -82,6 +89,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
         [Route("Many")]
         public HttpResponseMessage DeleteMany(params CityViewModel[] items)
@@ -96,6 +104,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
         public HttpResponseMessage Delete(CityViewModel item)
         {

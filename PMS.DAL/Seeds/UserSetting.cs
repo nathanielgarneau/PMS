@@ -1,10 +1,9 @@
 ﻿using System;
 using PMS.DAL.Interfaces;
-using PMS.Xam.Model.Interfaces;
 
-namespace  PMS.DAL.Seeds
+namespace PMS.DAL.Seeds
 {
-    public class UserSetting :ISeed
+    public class UserSetting : ISeed
     {
         public void Seed(CodeFirstModel context)
         {
@@ -12,9 +11,8 @@ namespace  PMS.DAL.Seeds
             {
                 throw new NotImplementedException();
             }
-            catch(NotImplementedException e)
+            catch (NotImplementedException e)
             {
-                
             }
         }
     }

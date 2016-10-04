@@ -1,37 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using System.Runtime.CompilerServices;
 using PMS.DAL.Interfaces;
-using PMS.Xam.Model.Interfaces;
 
 namespace PMS.DAL.Seeds
 {
-    public class Colour:ISeed
-    {  public void Seed(CodeFirstModel context)
-        {
-            context.Colour.AddOrUpdate(x => x.Name,
-                GetColours()
-                );  
-        }
-
-        private PMS.Xam.DAL.Model.Colour[] GetColours( )
-        {
-            var cities = new List<PMS.Xam.DAL.Model.Colour>();
-            foreach (var kvp in Colours)
-            {
-                var city = new PMS.Xam.DAL.Model.Colour()
-                {
-                    Name = kvp.Key,
-                    Code = kvp.Value
-                };
-                cities.Add(city);
-            }
-
-            return cities.ToArray();
-        }
-
-        private readonly Dictionary<string, string> Colours = new Dictionary<string, string>()
+    public class Colour : ISeed
+    {
+        private readonly Dictionary<string, string> Colours = new Dictionary<string, string>
         {
             {"White", "#FFFFFF"},
             {"Silver", "#C0C0C0"},
@@ -51,5 +26,27 @@ namespace PMS.DAL.Seeds
             {"Purple", "#800080"}
         };
 
+        public void Seed(CodeFirstModel context)
+        {
+            context.Colour.AddOrUpdate(x => x.Name,
+                GetColours()
+                );
+        }
+
+        private Xam.DAL.Model.Colour[] GetColours()
+        {
+            var cities = new List<Xam.DAL.Model.Colour>();
+            foreach (var kvp in Colours)
+            {
+                var city = new Xam.DAL.Model.Colour
+                {
+                    Name = kvp.Key,
+                    Code = kvp.Value
+                };
+                cities.Add(city);
+            }
+
+            return cities.ToArray();
+        }
     }
 }

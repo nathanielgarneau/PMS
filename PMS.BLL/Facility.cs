@@ -1,12 +1,11 @@
 ﻿using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
-
 namespace PMS.BLL
 {
-    public class Facility :GenericBusinessLayer<Xam.DAL.Model.Facility, FacilityViewModel> 
+    public class Facility : GenericBusinessLayer<Xam.DAL.Model.Facility, FacilityViewModel>
     {
-         public Facility()
+        public Facility()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.Facility>();
         }
@@ -15,10 +14,12 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override FacilityViewModel ConvertToViewModel(Xam.DAL.Model.Facility model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.Facility ToDal(FacilityViewModel viewModel)
         {
             return new Xam.DAL.Model.Facility
@@ -28,6 +29,7 @@ namespace PMS.BLL
                 Address = Address.ToDal(viewModel.Address)
             };
         }
+
         public static FacilityViewModel ToViewModel(Xam.DAL.Model.Facility model)
         {
             return new FacilityViewModel

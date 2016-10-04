@@ -1,43 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using System.Diagnostics;
 using System.Linq;
 using PMS.DAL.Interfaces;
-using PMS.Xam.Model.Interfaces;
 
-namespace  PMS.DAL.Seeds
+namespace PMS.DAL.Seeds
 {
-    public class Province :ISeed{
-        public void Seed(CodeFirstModel context)
-        {
-            context.Province.AddOrUpdate(
-                x => x.Name ,
-                GetProvinces(context)
-                );
-         
-        }
-
-        private PMS.Xam.DAL.Model.Province[] GetProvinces(CodeFirstModel context)
-        {
-            var cities = new List<PMS.Xam.DAL.Model.Province>();
-            foreach (var kvp in CanadianProvinces)
-            {
-                var countryName = ((object[]) kvp.Value)[0].ToString();
-                var abbreviation = ((object[]) kvp.Value)[1].ToString();
-                var city = new PMS.Xam.DAL.Model.Province()
-                {
-                    Name = kvp.Key,
-                    Country = context.Country.First(x => x.Name ==countryName ),
-                    Abbreviation = abbreviation
-                };
-                cities.Add(city);
-            }
-
-            return cities.ToArray();
-        }
-
-        private readonly Dictionary<string, object> CanadianProvinces = new Dictionary<string, object>()
+    public class Province : ISeed
+    {
+        private readonly Dictionary<string, object> CanadianProvinces = new Dictionary<string, object>
         {
             {"Alberta", new[] {"Canada", "AB"}},
             {"British Columbia", new[] {"Canada", "BC"}},
@@ -53,5 +23,32 @@ namespace  PMS.DAL.Seeds
             {"Nunavut", new[] {"Canada", "NU"}},
             {"Yukon", new[] {"Canada", "YT"}}
         };
+
+        public void Seed(CodeFirstModel context)
+        {
+            context.Province.AddOrUpdate(
+                x => x.Name,
+                GetProvinces(context)
+                );
+        }
+
+        private Xam.DAL.Model.Province[] GetProvinces(CodeFirstModel context)
+        {
+            var cities = new List<Xam.DAL.Model.Province>();
+            foreach (var kvp in CanadianProvinces)
+            {
+                var countryName = ((object[]) kvp.Value)[0].ToString();
+                var abbreviation = ((object[]) kvp.Value)[1].ToString();
+                var city = new Xam.DAL.Model.Province
+                {
+                    Name = kvp.Key,
+                    Country = context.Country.First(x => x.Name == countryName),
+                    Abbreviation = abbreviation
+                };
+                cities.Add(city);
+            }
+
+            return cities.ToArray();
+        }
     }
 }

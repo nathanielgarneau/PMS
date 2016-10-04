@@ -62,7 +62,7 @@
     <Compile Include="RateViewModel.cs" />
     <Compile Include="SettingViewModel.cs" />
     <Compile Include="TagViewModel.cs" />
-    <Compile Include="UserSettingsViewModel.cs" />
+    <Compile Include="UserSettingViewModel.cs" />
     <Compile Include="UserViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

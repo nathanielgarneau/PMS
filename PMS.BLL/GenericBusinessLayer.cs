@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using PMS.BLL.Interfaces;
 using PMS.DAL.Repositories.Interfaces;
 using PMS.Xam.Model.Interfaces;
 
@@ -10,20 +10,20 @@ using PMS.Xam.Model.Interfaces;
 
 namespace PMS.BLL
 {
-    public class GenericBusinessLayer<T, TX> : PMS.BLL.Interfaces.IBusinessLayer<TX, int>, PMS.BLL.Interfaces.IViewModelConvertToDalModel<T, TX>
+    public class GenericBusinessLayer<T, TX> : IBusinessLayer<TX, int>, IViewModelConvertToDalModel<T, TX>
         where T : class, IEntity<int>, new() where TX : class, IEntity<int>
     {
         internal IGenericDataRepository<T> Repository;
 
-        public void Add(TX item)
+        public virtual void Add(TX item)
         {
-            T record = ConvertToDal(item);
+            var record = ConvertToDal(item);
             Repository.Insert(record);
         }
 
         public void Add(params TX[] items)
         {
-            List<T> settings = items.Select(item => ConvertToDal(item)).ToList();
+            var settings = items.Select(item => ConvertToDal(item)).ToList();
             //Parallel.ForEach(items, item =>
             //{
             //    T record = ConvertToDal(item);
@@ -37,14 +37,14 @@ namespace PMS.BLL
 
         public TX Get(int id)
         {
-            T item = Repository.Select(id);
-            TX result = ConvertToViewModel(item);
+            var item = Repository.Select(id);
+            var result = ConvertToViewModel(item);
             return result;
         }
 
         public List<TX> GetAll()
         {
-            IEnumerable<T> items = Repository.SelectAll();
+            var items = Repository.SelectAll();
             //Parallel.ForEach(items, item =>
             //{
             //    TX result = ConvertToViewModel(item);
@@ -71,7 +71,7 @@ namespace PMS.BLL
 
         public void Remove(TX item)
         {
-            T record = ConvertToDal(item);
+            var record = ConvertToDal(item);
             Repository.Delete(record);
         }
 
@@ -87,20 +87,20 @@ namespace PMS.BLL
             //});
             foreach (var item in items)
             {
-                T record = ConvertToDal(item);
+                var record = ConvertToDal(item);
                 Repository.Delete(record);
             }
         }
 
         public void Update(TX item)
         {
-            T record = ConvertToDal(item);
+            var record = ConvertToDal(item);
             Repository.Update(record);
         }
 
         public void Update(params TX[] items)
         {
-            List<T> records = items.Select(item => ConvertToDal(item)).ToList();
+            var records = items.Select(item => ConvertToDal(item)).ToList();
             //Parallel.ForEach(items, item =>
             //{
             //    T record = ConvertToDal(item);

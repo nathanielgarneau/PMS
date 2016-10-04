@@ -1,33 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
-     [RoutePrefix("api/ProductType")]
-    public class ProductTypeController : ApiController, Interfaces.IApiController<ProductTypeViewModel, int>
+    [RoutePrefix("api/ProductType")]
+    public class ProductTypeController : ApiController, IApiController<ProductTypeViewModel, int>
     {
-        private readonly BLL.ProductType _businessLayer = new BLL.ProductType();
+        private readonly ProductType _businessLayer = new ProductType();
+
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<ProductTypeViewModel> GetMany([FromUri]params int[] ids)
+        public IEnumerable<ProductTypeViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
+
         [HttpGet]
         public ProductTypeViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
+
         [HttpGet]
         public IEnumerable<ProductTypeViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
+
         [HttpPost]
         [Route("Many")]
         public HttpResponseMessage PostMany(params ProductTypeViewModel[] items)
@@ -42,6 +46,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPost]
         public HttpResponseMessage Post(ProductTypeViewModel item)
         {
@@ -55,6 +60,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
         [Route("Many")]
         public HttpResponseMessage PutMany(params ProductTypeViewModel[] items)
@@ -69,6 +75,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
         public HttpResponseMessage Put(ProductTypeViewModel item)
         {
@@ -82,6 +89,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
         [Route("Many")]
         public HttpResponseMessage DeleteMany(params ProductTypeViewModel[] items)
@@ -96,6 +104,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
         public HttpResponseMessage Delete(ProductTypeViewModel item)
         {

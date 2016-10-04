@@ -1,31 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
-{ [RoutePrefix("api/Facility")]
-    public class FacilityController : ApiController, Interfaces.IApiController<FacilityViewModel,int>
+{
+    [RoutePrefix("api/Facility")]
+    public class FacilityController : ApiController, IApiController<FacilityViewModel, int>
     {
-        private readonly BLL.Facility _businessLayer = new BLL.Facility();
-             [HttpGet]
-        [Route("Many")] public IEnumerable<FacilityViewModel> GetMany([FromUri]params int[] ids)
+        private readonly Facility _businessLayer = new Facility();
+
+        [HttpGet]
+        [Route("Many")]
+        public IEnumerable<FacilityViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
-            [HttpGet]   public FacilityViewModel GetById(int id)
+
+        [HttpGet]
+        public FacilityViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
-             [HttpGet]  public IEnumerable<FacilityViewModel> GetAll()
+
+        [HttpGet]
+        public IEnumerable<FacilityViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
+
         [HttpPost]
-        [Route("Many")]   public HttpResponseMessage PostMany(params FacilityViewModel[] items)
+        [Route("Many")]
+        public HttpResponseMessage PostMany(params FacilityViewModel[] items)
         {
             try
             {
@@ -37,7 +46,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-         [HttpPost]  public HttpResponseMessage Post(FacilityViewModel item)
+
+        [HttpPost]
+        public HttpResponseMessage Post(FacilityViewModel item)
         {
             try
             {
@@ -49,8 +60,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
-        [Route("Many")]  public HttpResponseMessage PutMany(params FacilityViewModel[] items)
+        [Route("Many")]
+        public HttpResponseMessage PutMany(params FacilityViewModel[] items)
         {
             try
             {
@@ -62,7 +75,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-        [HttpPut]  public HttpResponseMessage Put(FacilityViewModel item)
+
+        [HttpPut]
+        public HttpResponseMessage Put(FacilityViewModel item)
         {
             try
             {
@@ -74,8 +89,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
-        [Route("Many")]   public HttpResponseMessage DeleteMany(params FacilityViewModel[] items)
+        [Route("Many")]
+        public HttpResponseMessage DeleteMany(params FacilityViewModel[] items)
         {
             try
             {
@@ -87,7 +104,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-            [HttpDelete]   public HttpResponseMessage Delete(FacilityViewModel item)
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(FacilityViewModel item)
         {
             try
             {

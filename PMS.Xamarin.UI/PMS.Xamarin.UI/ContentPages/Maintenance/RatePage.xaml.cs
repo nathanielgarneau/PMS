@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.ViewModel;
+using PMS.Xam.WebApiClient;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
@@ -14,10 +10,10 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         {
             InitializeComponent();
             Title = "Rate";
-            RateListView.ItemTemplate = new DataTemplate(typeof(RateViewModel));
-            RateListView.ItemsSource = WebApiClient.ApiClient.Rate.GetAll();
-           
-         
+            RateListView.ItemTemplate = new DataTemplate(typeof (RateViewModel));
+            RateListView.ItemsSource = ApiClient.Rate.GetAll();
+
+
             RateListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             RateListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout

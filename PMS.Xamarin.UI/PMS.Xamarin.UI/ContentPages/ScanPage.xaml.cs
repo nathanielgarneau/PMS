@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages
 {
@@ -13,7 +7,7 @@ namespace PMS.Xam.UI.ContentPages
         public ScanPage()
         {
             InitializeComponent();
-             Title = "Scan";
+            Title = "Scan";
         }
     }
 }

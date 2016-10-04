@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Web.Http;
-using System.Web.Http.Results;
-using Newtonsoft.Json;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
-     [RoutePrefix("api/Colour")]
-    public class ColourController : ApiController, Interfaces.IApiController<ColourViewModel, int>
+    [RoutePrefix("api/Colour")]
+    public class ColourController : ApiController, IApiController<ColourViewModel, int>
     {
-        private readonly BLL.Colour _businessLayer = new BLL.Colour();
+        private readonly Colour _businessLayer = new Colour();
+
         [HttpGet]
         [Route("Many")]
-        public IEnumerable<ColourViewModel> GetMany([FromUri]params int[] ids)
+        public IEnumerable<ColourViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
@@ -27,11 +25,13 @@ namespace PMS.WebApi.Controllers
         {
             return _businessLayer.Get(id);
         }
+
         [HttpGet]
         public IEnumerable<ColourViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
+
         [HttpPost]
         [Route("Many")]
         public HttpResponseMessage PostMany(params ColourViewModel[] items)
@@ -46,6 +46,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPost]
         public HttpResponseMessage Post(ColourViewModel item)
         {
@@ -59,6 +60,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
         [Route("Many")]
         public HttpResponseMessage PutMany(params ColourViewModel[] items)
@@ -73,6 +75,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
         public HttpResponseMessage Put(ColourViewModel item)
         {
@@ -86,6 +89,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
         [Route("Many")]
         public HttpResponseMessage DeleteMany(params ColourViewModel[] items)
@@ -100,6 +104,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
         public HttpResponseMessage Delete(ColourViewModel item)
         {

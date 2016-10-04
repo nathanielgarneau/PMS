@@ -1,12 +1,11 @@
 ﻿using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
-
 namespace PMS.BLL
 {
-    public class Province :GenericBusinessLayer<Xam.DAL.Model.Province, ProvinceViewModel> 
+    public class Province : GenericBusinessLayer<Xam.DAL.Model.Province, ProvinceViewModel>
     {
-         public Province()
+        public Province()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.Province>();
         }
@@ -15,10 +14,12 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override ProvinceViewModel ConvertToViewModel(Xam.DAL.Model.Province model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.Province ToDal(ProvinceViewModel viewModel)
         {
             return new Xam.DAL.Model.Province
@@ -29,6 +30,7 @@ namespace PMS.BLL
                 Country = Country.ToDal(viewModel.Country)
             };
         }
+
         public static ProvinceViewModel ToViewModel(Xam.DAL.Model.Province model)
         {
             return new ProvinceViewModel

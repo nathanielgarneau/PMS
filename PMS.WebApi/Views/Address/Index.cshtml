@@ -5,7 +5,7 @@
     ViewBag.Title = "Index";
 }
 <p>
-    @Html.ActionLink("Create New", "Create", new { }, new { @class = "k-button" })
+    @Html.ActionLink("Create New", "Create", new {}, new {@class = "k-button"})
 </p>
 @(Html.Grid(Model).Columns(columns =>
   {
@@ -15,17 +15,17 @@
       columns.Add(x => x.City.Name);
       columns.Add(x => x.Province.Name);
       columns.Add(x => x.Country.Name);
-    columns.Add(x => x.Province).Titled("Custom Column Title");
-    columns.Add().Encoded(false).Sanitized(false).SetWidth(20)
-        .RenderValueAs(x => @Html.ActionLink("Details", "Details", new { id = x.Id }));
-    columns.Add().Encoded(false).Sanitized(false).SetWidth(20)
-      .RenderValueAs(x => @Html.ActionLink("Edit", "Edit", new { id = x.Id }));
-    columns.Add().Encoded(false).Sanitized(false).SetWidth(20)
-      .RenderValueAs(x => @Html.ActionLink("Delete", "Delete", new { id = x.Id }));
-})
-.WithPaging(10)
-.WithMultipleFilters()
-.Filterable(true)
-.Sortable(true)
-.Selectable(false)
-)
+      columns.Add(x => x.Province).Titled("Custom Column Title");
+      columns.Add().Encoded(false).Sanitized(false).SetWidth(20)
+          .RenderValueAs(x => @Html.ActionLink("Details", "Details", new {id = x.Id}));
+      columns.Add().Encoded(false).Sanitized(false).SetWidth(20)
+          .RenderValueAs(x => @Html.ActionLink("Edit", "Edit", new {id = x.Id}));
+      columns.Add().Encoded(false).Sanitized(false).SetWidth(20)
+          .RenderValueAs(x => @Html.ActionLink("Delete", "Delete", new {id = x.Id}));
+  })
+      .WithPaging(10)
+      .WithMultipleFilters()
+      .Filterable(true)
+      .Sortable(true)
+      .Selectable(false)
+      )

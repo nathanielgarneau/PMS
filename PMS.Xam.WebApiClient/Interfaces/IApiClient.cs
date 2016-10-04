@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.Xam.WebApiClient.Interfaces
 {
-      public interface IApiClient<T, in TX>
+    public interface IApiClient<T, in TX>
         where T : IEntity<TX>
     {
         List<T> GetList(params TX[] ids);

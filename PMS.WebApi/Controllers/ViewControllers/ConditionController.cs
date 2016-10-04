@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
+using PMS.WebApi.Helpers;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers.ViewControllers
 {
-    public class ConditionController :Controller, Interfaces.IViewController<ConditionViewModel, int>
+    public class ConditionController : Controller, IViewController<ConditionViewModel, int>
     {
-         private readonly BLL.Condition _businessLayer = new BLL.Condition();
+        private readonly Condition _businessLayer = new Condition();
+        private readonly ViewBagHelper _viewBagHelper = new ViewBagHelper();
 
         public ActionResult Create()
         {

@@ -59,6 +59,14 @@
     <Compile Include="Migrations\201609022113507_V00.Designer.cs">
       <DependentUpon>201609022113507_V00.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610032154269_Updates.cs" />
+    <Compile Include="Migrations\201610032154269_Updates.Designer.cs">
+      <DependentUpon>201610032154269_Updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041711140_UpdateTags.cs" />
+    <Compile Include="Migrations\201610041711140_UpdateTags.Designer.cs">
+      <DependentUpon>201610041711140_UpdateTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seeds\Address.cs" />
@@ -97,6 +105,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609022113507_V00.resx">
       <DependentUpon>201609022113507_V00.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610032154269_Updates.resx">
+      <DependentUpon>201610032154269_Updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041711140_UpdateTags.resx">
+      <DependentUpon>201610041711140_UpdateTags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

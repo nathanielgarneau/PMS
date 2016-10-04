@@ -112,8 +112,8 @@
     <Compile Include="ContentPages\Maintenance\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ContentPages\Maintenance\UserSettingsPage.xaml.cs">
-      <DependentUpon>UserSettingsPage.xaml</DependentUpon>
+    <Compile Include="ContentPages\Maintenance\UserSettingPage.xaml.cs">
+      <DependentUpon>UserSettingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ContentPages\MakePaymentPage.xaml.cs">
       <DependentUpon>MakePaymentPage.xaml</DependentUpon>
@@ -203,7 +203,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ContentPages\Maintenance\UserSettingsPage.xaml">
+    <EmbeddedResource Include="ContentPages\Maintenance\UserSettingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

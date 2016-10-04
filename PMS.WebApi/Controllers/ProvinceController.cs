@@ -1,32 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
-     [RoutePrefix("api/Province")]
-    public class ProvinceController : ApiController, Interfaces.IApiController<ProvinceViewModel,int>
+    [RoutePrefix("api/Province")]
+    public class ProvinceController : ApiController, IApiController<ProvinceViewModel, int>
     {
-        private readonly BLL.Province _businessLayer = new BLL.Province();
+        private readonly Province _businessLayer = new Province();
+
         [HttpGet]
-        [Route("Many")]  public IEnumerable<ProvinceViewModel> GetMany([FromUri]params int[] ids)
+        [Route("Many")]
+        public IEnumerable<ProvinceViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
-        [HttpGet] public ProvinceViewModel GetById(int id)
+
+        [HttpGet]
+        public ProvinceViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
-         [HttpGet]public IEnumerable<ProvinceViewModel> GetAll()
+
+        [HttpGet]
+        public IEnumerable<ProvinceViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
-           [HttpPost]
-        [Route("Many")] public HttpResponseMessage PostMany(params ProvinceViewModel[] items)
+
+        [HttpPost]
+        [Route("Many")]
+        public HttpResponseMessage PostMany(params ProvinceViewModel[] items)
         {
             try
             {
@@ -38,7 +46,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpPost] public HttpResponseMessage Post(ProvinceViewModel item)
+
+        [HttpPost]
+        public HttpResponseMessage Post(ProvinceViewModel item)
         {
             try
             {
@@ -50,8 +60,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-               [HttpPut]
-        [Route("Many")] public HttpResponseMessage PutMany(params ProvinceViewModel[] items)
+
+        [HttpPut]
+        [Route("Many")]
+        public HttpResponseMessage PutMany(params ProvinceViewModel[] items)
         {
             try
             {
@@ -63,8 +75,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-      
-        [HttpPut]  public HttpResponseMessage Put(ProvinceViewModel item)
+
+        [HttpPut]
+        public HttpResponseMessage Put(ProvinceViewModel item)
         {
             try
             {
@@ -76,8 +89,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpDelete]
-        [Route("Many")]  public HttpResponseMessage DeleteMany(params ProvinceViewModel[] items)
+        [Route("Many")]
+        public HttpResponseMessage DeleteMany(params ProvinceViewModel[] items)
         {
             try
             {
@@ -89,7 +104,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpDelete] public HttpResponseMessage Delete(ProvinceViewModel item)
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(ProvinceViewModel item)
         {
             try
             {

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.ViewModel;
+using PMS.Xam.WebApiClient;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
@@ -13,11 +9,11 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         public LocationPage()
         {
             InitializeComponent();
-             Title = "Location";
-            LocationListView.ItemTemplate = new DataTemplate(typeof(LocationViewModel));
-            LocationListView.ItemsSource = WebApiClient.ApiClient.Location.GetAll();
-           
-         
+            Title = "Location";
+            LocationListView.ItemTemplate = new DataTemplate(typeof (LocationViewModel));
+            LocationListView.ItemsSource = ApiClient.Location.GetAll();
+
+
             LocationListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             LocationListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout

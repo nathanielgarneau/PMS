@@ -1,12 +1,11 @@
-﻿
-using PMS.DAL.Repositories;
+﻿using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
 namespace PMS.BLL
 {
-    public class City :GenericBusinessLayer<Xam.DAL.Model.City, CityViewModel> 
+    public class City : GenericBusinessLayer<Xam.DAL.Model.City, CityViewModel>
     {
-         public City()
+        public City()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.City>();
         }
@@ -15,26 +14,29 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override CityViewModel ConvertToViewModel(Xam.DAL.Model.City model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.City ToDal(CityViewModel viewModel)
         {
             return new Xam.DAL.Model.City
             {
                 Id = viewModel.Id,
                 Name = viewModel.Name,
-                Province = Province.ToDal( viewModel.Province)
+                Province = Province.ToDal(viewModel.Province)
             };
         }
+
         public static CityViewModel ToViewModel(Xam.DAL.Model.City model)
         {
             return new CityViewModel
             {
                 Id = model.Id,
                 Name = model.Name,
-                Province = Province.ToViewModel( model.Province)
+                Province = Province.ToViewModel(model.Province)
             };
         }
     }

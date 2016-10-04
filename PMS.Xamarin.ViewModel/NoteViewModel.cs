@@ -2,9 +2,9 @@
 
 namespace PMS.Xam.ViewModel
 {
-    public class NoteViewModel:IEntity<int>
+    public class NoteViewModel : IEntity<int>
     {
-        public int Id { get; set; }
         public string Value { get; set; }
+        public int Id { get; set; }
     }
 }

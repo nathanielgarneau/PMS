@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.ViewModel;
+using PMS.Xam.WebApiClient;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
@@ -13,11 +9,11 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         public AddressPage()
         {
             InitializeComponent();
-             Title = "Address";
-            AddressListView.ItemTemplate = new DataTemplate(typeof(AddressViewModel));
-            AddressListView.ItemsSource = WebApiClient.ApiClient.Address.GetAll();
-           
-         
+            Title = "Address";
+            AddressListView.ItemTemplate = new DataTemplate(typeof (AddressViewModel));
+            AddressListView.ItemsSource = ApiClient.Address.GetAll();
+
+
             AddressListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             AddressListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout

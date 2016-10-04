@@ -1,12 +1,11 @@
 ﻿using PMS.DAL.Repositories;
 using PMS.Xam.ViewModel;
 
-
 namespace PMS.BLL
 {
-    public class Setting :GenericBusinessLayer<Xam.DAL.Model.Setting, SettingViewModel> 
+    public class Setting : GenericBusinessLayer<Xam.DAL.Model.Setting, SettingViewModel>
     {
-         public Setting()
+        public Setting()
         {
             Repository = new GenericDataRepository<Xam.DAL.Model.Setting>();
         }
@@ -15,10 +14,12 @@ namespace PMS.BLL
         {
             return ToDal(viewModel);
         }
+
         public override SettingViewModel ConvertToViewModel(Xam.DAL.Model.Setting model)
         {
             return ToViewModel(model);
         }
+
         public static Xam.DAL.Model.Setting ToDal(SettingViewModel viewModel)
         {
             return new Xam.DAL.Model.Setting
@@ -28,6 +29,7 @@ namespace PMS.BLL
                 Value = viewModel.Value
             };
         }
+
         public static SettingViewModel ToViewModel(Xam.DAL.Model.Setting model)
         {
             return new SettingViewModel

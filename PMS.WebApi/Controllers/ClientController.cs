@@ -1,36 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
 {
-     [RoutePrefix("api/Client")]
-    public class ClientController : ApiController, Interfaces.IApiController<ClientViewModel,int>
+    [RoutePrefix("api/Client")]
+    public class ClientController : ApiController, IApiController<ClientViewModel, int>
     {
-         private readonly BLL.Client _businessLayer = new BLL.Client();
-         [HttpGet]
+        private readonly Client _businessLayer = new Client();
+
+        [HttpGet]
         [Route("Many")]
-           public IEnumerable<ClientViewModel> GetMany([FromUri]params int[] ids)
+        public IEnumerable<ClientViewModel> GetMany([FromUri] params int[] ids)
         {
-             return _businessLayer.GetList(ids);
+            return _businessLayer.GetList(ids);
         }
-         [HttpGet]
+
+        [HttpGet]
         public ClientViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
-               [HttpGet]
+
+        [HttpGet]
         public IEnumerable<ClientViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
-             [HttpPost]
+
+        [HttpPost]
         [Route("Many")]
-             public HttpResponseMessage PostMany(params ClientViewModel[] items)
+        public HttpResponseMessage PostMany(params ClientViewModel[] items)
         {
             try
             {
@@ -41,7 +45,9 @@ namespace PMS.WebApi.Controllers
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
-        }[HttpPost]
+        }
+
+        [HttpPost]
         public HttpResponseMessage Post(ClientViewModel item)
         {
             try
@@ -53,7 +59,9 @@ namespace PMS.WebApi.Controllers
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
-        } [HttpPut]
+        }
+
+        [HttpPut]
         [Route("Many")]
         public HttpResponseMessage PutMany(params ClientViewModel[] items)
         {
@@ -67,6 +75,7 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+
         [HttpPut]
         public HttpResponseMessage Put(ClientViewModel item)
         {
@@ -79,7 +88,9 @@ namespace PMS.WebApi.Controllers
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
-        } [HttpDelete]
+        }
+
+        [HttpDelete]
         [Route("Many")]
         public HttpResponseMessage DeleteMany(params ClientViewModel[] items)
         {
@@ -92,7 +103,9 @@ namespace PMS.WebApi.Controllers
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
-        }    [HttpDelete]
+        }
+
+        [HttpDelete]
         public HttpResponseMessage Delete(ClientViewModel item)
         {
             try

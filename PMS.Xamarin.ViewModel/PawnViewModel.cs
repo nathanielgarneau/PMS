@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PMS.Xam.Model.Interfaces;
 
 namespace PMS.Xam.ViewModel
 {
-    public class PawnViewModel:IEntity<int>
+    public class PawnViewModel : IEntity<int>
     {
-        public int Id { get; set; }
         public ICollection<ProductViewModel> Items { get; set; }
         public ICollection<NoteViewModel> Notes { get; set; }
         public ICollection<LocationViewModel> StorageLocations { get; set; }
@@ -26,8 +22,9 @@ namespace PMS.Xam.ViewModel
         //public bool PickedUp//TODO:Add to viewmodel
         public DateTime? ClosedDate { get; set; }
         public ClientViewModel Client { get; set; }
+        public int Id { get; set; }
+        //public double PurchaseCost{get;set;}//TODO: add to viewmodel
 
         //public bool Closed { get; set; }//TODO: add to viewmodel
-        //public double PurchaseCost{get;set;}//TODO: add to viewmodel
     }
 }

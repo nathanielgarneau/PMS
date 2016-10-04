@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.ViewModel;
+using PMS.Xam.WebApiClient;
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance
@@ -13,11 +9,11 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         public ConditionPage()
         {
             InitializeComponent();
-             Title = "Condition";
-            ConditionListView.ItemTemplate = new DataTemplate(typeof(ConditionViewModel));
-            ConditionListView.ItemsSource = WebApiClient.ApiClient.Condition.GetAll();
-           
-         
+            Title = "Condition";
+            ConditionListView.ItemTemplate = new DataTemplate(typeof (ConditionViewModel));
+            ConditionListView.ItemsSource = ApiClient.Condition.GetAll();
+
+
             ConditionListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             ConditionListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Code");
             var layout = new StackLayout
@@ -32,6 +28,5 @@ namespace PMS.Xam.UI.ContentPages.Maintenance
         }
 
         public ListView ConditionListView { get; set; }
-        
     }
 }

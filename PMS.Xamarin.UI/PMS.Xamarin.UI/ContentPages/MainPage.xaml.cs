@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
 namespace PMS.Xam.UI.ContentPages
 {
     public partial class MainPage : ContentPage
     {
-       ListView NavigationListView = new ListView();
         private const string Pawn = "Pawn";
         private const string Pickup = "Pick-up";
         private const string MakePayment = "Make a Payment";
@@ -19,11 +14,13 @@ namespace PMS.Xam.UI.ContentPages
         private const string Scan = "Scan";
         private const string Maintenance = "Maintenance";
         private const bool Animate = true;
+        private readonly ListView NavigationListView = new ListView();
+
         public MainPage()
         {
             InitializeComponent();
-             Title = "Pawn Management";
-            NavigationListView.ItemsSource = new List<string>()
+            Title = "Pawn Management";
+            NavigationListView.ItemsSource = new List<string>
             {
                 Pawn,
                 Pickup,
@@ -78,8 +75,9 @@ namespace PMS.Xam.UI.ContentPages
                 }
                 NavigationListView.SelectedItem = null;
             }
-            catch { }
+            catch
+            {
+            }
         }
-      
     }
 }

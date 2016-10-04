@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PMS.Xam.ViewModel;
+﻿using PMS.Xam.ViewModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 
 namespace PMS.Xam.UI.ContentPages.Maintenance.Colour
 {
     public partial class ColourEdit : ContentPage
     {
-        //private BusinessLayer BusinessLayer = new BusinessLayer();
-        private Picker _picker = new Picker();
-
-        private BoxView _boxView = new BoxView()
+        private readonly BoxView _boxView = new BoxView
         {
             WidthRequest = 150,
             HeightRequest = 150,
@@ -22,12 +13,15 @@ namespace PMS.Xam.UI.ContentPages.Maintenance.Colour
             VerticalOptions = LayoutOptions.CenterAndExpand
         };
 
-        public ColourEdit(Xam.ViewModel.ColourViewModel colour)
+        //private BusinessLayer BusinessLayer = new BusinessLayer();
+        private Picker _picker = new Picker();
+
+        public ColourEdit(ColourViewModel colour)
         {
             InitializeComponent();
             BindingContext = colour;
 
-            var editView = new StackLayout()
+            var editView = new StackLayout
             {
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -37,7 +31,7 @@ namespace PMS.Xam.UI.ContentPages.Maintenance.Colour
             var idLabel = new Label {Text = "Id: " + colour.Id};
             var nameEntry = new Entry {Placeholder = "Name"};
             nameEntry.SetBinding(Entry.TextProperty, "Name");
-        
+
             var codeEntry = new Entry {Placeholder = "Code"};
             codeEntry.SetBinding(Entry.TextProperty, "Code");
             _boxView.SetBinding(BoxView.ColorProperty, "Code");

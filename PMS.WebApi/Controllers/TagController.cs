@@ -1,31 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PMS.BLL;
+using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
 
 namespace PMS.WebApi.Controllers
-{ [RoutePrefix("api/Tag")]
-    public class TagController : ApiController, Interfaces.IApiController<TagViewModel,int>
+{
+    [RoutePrefix("api/Tag")]
+    public class TagController : ApiController, IApiController<TagViewModel, int>
     {
-        private readonly BLL.Tag _businessLayer = new BLL.Tag();
-          [HttpGet]
-        [Route("Many")]  public IEnumerable<TagViewModel> GetMany([FromUri]params int[] ids)
+        private readonly Tag _businessLayer = new Tag();
+
+        [HttpGet]
+        [Route("Many")]
+        public IEnumerable<TagViewModel> GetMany([FromUri] params int[] ids)
         {
             return _businessLayer.GetList(ids);
         }
-       [HttpGet]  public TagViewModel GetById(int id)
+
+        [HttpGet]
+        public TagViewModel GetById(int id)
         {
             return _businessLayer.Get(id);
         }
-         [HttpGet]public IEnumerable<TagViewModel> GetAll()
+
+        [HttpGet]
+        public IEnumerable<TagViewModel> GetAll()
         {
             return _businessLayer.GetAll();
         }
+
         [HttpPost]
-        [Route("Many")]     public HttpResponseMessage PostMany(params TagViewModel[] items)
+        [Route("Many")]
+        public HttpResponseMessage PostMany(params TagViewModel[] items)
         {
             try
             {
@@ -37,7 +46,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-       [HttpPost] public HttpResponseMessage Post(TagViewModel item)
+
+        [HttpPost]
+        public HttpResponseMessage Post(TagViewModel item)
         {
             try
             {
@@ -49,8 +60,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-          [HttpPut]
-        [Route("Many")] public HttpResponseMessage PutMany(params TagViewModel[] items)
+
+        [HttpPut]
+        [Route("Many")]
+        public HttpResponseMessage PutMany(params TagViewModel[] items)
         {
             try
             {
@@ -62,7 +75,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-          [HttpPut]   public HttpResponseMessage Put(TagViewModel item)
+
+        [HttpPut]
+        public HttpResponseMessage Put(TagViewModel item)
         {
             try
             {
@@ -74,8 +89,10 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-      [HttpDelete]
-        [Route("Many")]  public HttpResponseMessage DeleteMany(params TagViewModel[] items)
+
+        [HttpDelete]
+        [Route("Many")]
+        public HttpResponseMessage DeleteMany(params TagViewModel[] items)
         {
             try
             {
@@ -87,7 +104,9 @@ namespace PMS.WebApi.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-            [HttpDelete] public HttpResponseMessage Delete(TagViewModel item)
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(TagViewModel item)
         {
             try
             {
