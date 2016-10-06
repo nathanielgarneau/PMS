@@ -13,6 +13,7 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Create()
         {
+            _viewBagHelper.ProvinceSelectList(this);
             return View(new CityViewModel());
         }
 
@@ -30,6 +31,7 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Edit(int id)
         {
+            _viewBagHelper.ProvinceSelectList(this);
             var item = _businessLayer.Get(id);
             return View(item);
         }

@@ -13,7 +13,7 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Create()
         {
-            return View(new SettingController());
+            return View(new SettingViewModel());
         }
 
         public ActionResult Delete(int id)

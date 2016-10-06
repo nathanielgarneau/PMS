@@ -13,6 +13,7 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Create()
         {
+            _viewBagHelper.CountrySelectList(this);
             return View(new ProvinceViewModel());
         }
 
@@ -30,6 +31,7 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Edit(int id)
         {
+            _viewBagHelper.CountrySelectList(this);
             var item = _businessLayer.Get(id);
             return View(item);
         }

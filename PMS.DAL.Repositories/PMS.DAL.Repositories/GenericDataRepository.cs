@@ -43,7 +43,7 @@ namespace PMS.DAL.Repositories
                     catch (Exception exception)
                     {
                         _logger.Error("GenericDataRepository.MarkUnchanged failed", exception);
-                        throw;
+                        //throw;
                     }
             if (collectionsToMarkUnchanged != null)
                 foreach (var reference in collectionsToMarkUnchanged)
@@ -54,7 +54,7 @@ namespace PMS.DAL.Repositories
                     catch (Exception exception)
                     {
                         _logger.Error("GenericDataRepository.MarkUnchanged failed", exception);
-                        throw;
+                        //throw;
                     }
         }
 
@@ -164,16 +164,19 @@ namespace PMS.DAL.Repositories
 
         public T Select(int pk)
         {
+            var  contextConfigurationAutoDetectChangesEnabled = _context.Configuration.AutoDetectChangesEnabled;
             try
             {
-                IQueryable<T> dbQuery = _context.Set<T>();
+                _context.Configuration.AutoDetectChangesEnabled = false;
+               // IQueryable<T> dbQuery = _context.Set<T>();
 
                 //Apply eager loading
                 //dbQuery = navigationProperties.Aggregate(dbQuery, (current, navigationProperty) => current.Include<T, object>(navigationProperty));
+               var item = _context.Set<T>().Find(pk);
 
-                var item = dbQuery
-                    .AsNoTracking() //Don't track any changes for the selected item
-                    .FirstOrDefault(x => x.Id == pk);
+                //var item = dbQuery
+                //    .AsNoTracking() //Don't track any changes for the selected item
+                //    .FirstOrDefault(x => x.Id == pk);
 
                 return item;
             }
@@ -182,20 +185,29 @@ namespace PMS.DAL.Repositories
                 _logger.Error("GenericDataRepository.GetSingle failed", exception);
                 throw;
             }
+            finally
+            {
+                _context.Configuration.AutoDetectChangesEnabled = contextConfigurationAutoDetectChangesEnabled;
+            }
         }
 
         public IEnumerable<T> SelectAll()
         {
+              var  contextConfigurationAutoDetectChangesEnabled = _context.Configuration.AutoDetectChangesEnabled;
             try
             {
-                IQueryable<T> dbQuery = _context.Set<T>();
+                
+                _context.Configuration.AutoDetectChangesEnabled = false;
+                //IQueryable<T> dbQuery = _context.Set<T>();
+
                 //Apply eager loading
                 //dbQuery = navigationProperties.Aggregate(dbQuery,
                 //    (current, navigationProperty) => current.Include<T, object>(navigationProperty));
 
-                var list = dbQuery
-                    .AsNoTracking()
-                    .ToList();
+                var list =_context.Set<T>().AsNoTracking().ToList();
+                //var list = dbQuery
+                //    .AsNoTracking()
+                //    .ToList();
 
                 return list;
             }

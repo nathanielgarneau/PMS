@@ -13,6 +13,7 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Create()
         {
+            _viewBagHelper.FacilityList(this);
             return View(new LocationViewModel());
         }
 

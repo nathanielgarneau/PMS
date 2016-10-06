@@ -13,6 +13,10 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Create()
         {
+            _viewBagHelper.ProductList(this);
+            _viewBagHelper.LocationSelectList(this);
+            _viewBagHelper.RateSelectList(this);
+            _viewBagHelper.ClientList(this);
             return View(new PawnViewModel());
         }
 
@@ -30,6 +34,10 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Edit(int id)
         {
+            _viewBagHelper.ProductList(this);
+            _viewBagHelper.LocationSelectList(this);
+            _viewBagHelper.RateSelectList(this);
+            _viewBagHelper.ClientList(this);
             var item = _businessLayer.Get(id);
             return View(item);
         }

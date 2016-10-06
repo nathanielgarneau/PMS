@@ -13,6 +13,7 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Create()
         {
+            _viewBagHelper.PaymentTypeList(this);
             return View(new PaymentViewModel());
         }
 
@@ -30,6 +31,7 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Edit(int id)
         {
+            _viewBagHelper.PaymentTypeList(this);
             var item = _businessLayer.Get(id);
             return View(item);
         }

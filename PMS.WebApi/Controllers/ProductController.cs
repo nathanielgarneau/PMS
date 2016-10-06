@@ -8,6 +8,7 @@ using System.Web.Http;
 using PMS.BLL;
 using PMS.WebApi.Controllers.Interfaces;
 using PMS.Xam.ViewModel;
+using WebGrease.Css.Extensions;
 
 namespace PMS.WebApi.Controllers
 {
@@ -112,6 +113,8 @@ namespace PMS.WebApi.Controllers
             }
         }
 
+       
+
         [HttpDelete]
         public HttpResponseMessage Delete(ProductViewModel item)
         {
@@ -136,10 +139,7 @@ namespace PMS.WebApi.Controllers
         {
             Parallel.Invoke(
                 () => { item.Colour = BusinessLayer.Colour.Get(item.Colour.Id); },
-                () =>
-                {
-                    item.Conditions = BusinessLayer.Condition.GetList(item.Conditions.Select(x => x.Id).ToArray());
-                },
+                () => { item.Conditions = BusinessLayer.Condition.GetList(item.Conditions.Select(x => x.Id).ToArray()); },
                 () => { item.Tags = BusinessLayer.Tag.GetList(item.Tags.Select(x => x.Id).ToArray()); },
                 () => { item.ProductType = BusinessLayer.ProductType.Get(item.ProductType.Id); });
             return item;

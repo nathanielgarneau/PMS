@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using PMS.BLL;
+using PMS.WebApi.Controllers.ViewControllers;
 
 namespace PMS.WebApi.Helpers
 {
@@ -278,6 +279,141 @@ namespace PMS.WebApi.Helpers
         {
             var items = _businessLayer.UserSetting.GetAll();
             controller.ViewBag.UserSettingMultiSelectList = new MultiSelectList(items, "Id", "Name");
+        }
+
+        public void AddressList(Controller controller)
+        {
+             var items = _businessLayer.UserSetting.GetAll();
+            controller.ViewBag.AddressList = items;
+        }
+        public void CityList(Controller controller)
+        {
+            var items = _businessLayer.City.GetAll();
+            controller.ViewBag.CityList = items;
+        }
+
+        public void ClientList(Controller controller)
+        {
+            var items = _businessLayer.Client.GetAll().Select(s => new
+            {
+                s.Id,
+                FullName = string.Format("{0} {1}", s.FirstName, s.LastName)
+            });
+            controller.ViewBag.ClientList = items;
+        }
+
+        public void ColourList(Controller controller)
+        {
+            var items = _businessLayer.Colour.GetAll();
+            controller.ViewBag.ColourList = items;
+        }
+
+        public void ConditionList(Controller controller)
+        {
+            var items = _businessLayer.Condition.GetAll();
+            controller.ViewBag.ConditionList = items;
+        }
+
+        public void CountryList(Controller controller)
+        {
+            var items = _businessLayer.Country.GetAll();
+            controller.ViewBag.CountryList =items;
+        }
+
+        public void FacilityList(Controller controller)
+        {
+            var items = _businessLayer.Facility.GetAll();
+            controller.ViewBag.FacilityList = items;
+        }
+
+        public void IdentificationTypeList(Controller controller)
+        {
+            var items = _businessLayer.IdentificationType.GetAll();
+            controller.ViewBag.IdentificationTypeList = items;
+        }
+
+        public void LocationList(Controller controller)
+        {
+            var items = _businessLayer.Location.GetAll();
+            controller.ViewBag.LocationList = items;
+        }
+
+        public void NoteList(Controller controller)
+        {
+            var items = _businessLayer.Note.GetAll();
+            controller.ViewBag.NoteList = items;
+        }
+
+        public void PawnList(Controller controller)
+        {
+            var items = _businessLayer.Pawn.GetAll();
+            controller.ViewBag.PawnList = items;
+        }
+
+        public void PaymentList(Controller controller)
+        {
+            var items = _businessLayer.Payment.GetAll();
+            controller.ViewBag.PaymentList = items;
+        }
+
+        public void PaymentTypeList(Controller controller)
+        {
+            var items = _businessLayer.PaymentType.GetAll();
+            controller.ViewBag.PaymentTypeList = items;
+        }
+
+        public void ProductList(Controller controller)
+        {
+            var items = _businessLayer.Product.GetAll();
+            controller.ViewBag.ProductList = items;
+        }
+
+        public void ProductTypeList(Controller controller)
+        {
+            var items = _businessLayer.ProductType.GetAll();
+            controller.ViewBag.ProductTypeList = items;
+        }
+
+        public void ProvinceList(Controller controller)
+        {
+            var items = _businessLayer.Province.GetAll();
+            controller.ViewBag.ProvinceList = items;
+        }
+
+        public void PurchaseList(Controller controller)
+        {
+            var items = _businessLayer.Purchase.GetAll();
+            controller.ViewBag.PurchaseList = items;
+        }
+
+        public void RateList(Controller controller)
+        {
+            var items = _businessLayer.Rate.GetAll();
+            controller.ViewBag.RateList = items;
+        }
+
+        public void SettingList(Controller controller)
+        {
+            var items = _businessLayer.Setting.GetAll();
+            controller.ViewBag.SettingList = items;
+        }
+
+        public void TagList(Controller controller)
+        {
+            var items = _businessLayer.Tag.GetAll();
+            controller.ViewBag.TagList = items;
+        }
+
+        public void UserList(Controller controller)
+        {
+            var items = _businessLayer.User.GetAll();
+            controller.ViewBag.UserList = items;
+        }
+
+        public void UserSettingList(Controller controller)
+        {
+            var items = _businessLayer.UserSetting.GetAll();
+            controller.ViewBag.UserSettingList = items;
         }
     }
 }

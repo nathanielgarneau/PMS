@@ -1,4 +1,5 @@
-﻿@model PMS.Xam.ViewModel.ProductViewModel
+﻿@using System.Web.Helpers
+@model PMS.Xam.ViewModel.ProductViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -18,24 +19,47 @@
         <dt> @Html.DisplayNameFor(model => model.Description)</dt>
         <dd> @Html.DisplayFor(model => model.Description) </dd>
         <dt> @Html.DisplayNameFor(model => model.ProductType)</dt>
-        <dd> @Html.DisplayFor(model => model.ProductType) </dd>
+        <dd> @Html.DisplayFor(model => model.ProductType.Name) </dd>
         <dt> @Html.DisplayNameFor(model => model.Year)</dt>
         <dd> @Html.DisplayFor(model => model.Year) </dd>
         <dt> @Html.DisplayNameFor(model => model.Colour)</dt>
-        <dd> @Html.DisplayFor(model => model.Colour) </dd>
+        <dd> @Html.DisplayFor(model => model.Colour.Name) </dd>
         <dt> @Html.DisplayNameFor(model => model.Conditions)</dt>
         <dd> @Html.DisplayFor(model => model.Conditions) </dd>
         <dt> @Html.DisplayNameFor(model => model.Tags)</dt>
         <dd> @Html.DisplayFor(model => model.Tags) </dd>
     </dl>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default"/> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+    @*@using (Html.BeginForm("Delete", "api/Product"))
+    {*@
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    @Html.AntiForgeryToken()
+    @*@Html.Hidden("id", Model.Id)*@
+    <form ></form>
+    <div class="form-actions no-color">
+        @Ajax.ActionLink("Delete", "Delete", "api/Product", new {id = Model.Id}, new AjaxOptions {HttpMethod = "DELETE"}, new {@value="delete", @class = "btn btn-default"})
+        httpDelete
+        <input type="submit" value="Delete" onclick="httpDelete()" class="btn btn-default"/> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    @*}*@
 </div>
+<script>
+    httpDelete = function() {
+        var productViewModel = @Html.Raw(Json.Encode(Model));
+        $.ajax({
+            url: "http://localhost:55380/api/Product/" ,
+            type: "DELETE",
+            data: JSON.stringify(productViewModel),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            headers: {
+                "Content-Type": "application/json",
+                "X-HTTP-Method-Override": "DELETE"
+            }
+        });
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

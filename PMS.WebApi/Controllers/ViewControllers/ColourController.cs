@@ -13,6 +13,7 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Create()
         {
+
             return View(new ColourViewModel());
         }
 

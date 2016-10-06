@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CacheManager.Core;
 using PMS.BLL.Interfaces;
 using PMS.DAL.Repositories.Interfaces;
 using PMS.Xam.Model.Interfaces;
@@ -14,112 +15,72 @@ namespace PMS.BLL
         where T : class, IEntity<int>, new() where TX : class, IEntity<int>
     {
         internal IGenericDataRepository<T> Repository;
-
         public virtual void Add(TX item)
         {
-            var record = ConvertToDal(item);
+            T record = ConvertToDal(item);
             Repository.Insert(record);
         }
 
         public void Add(params TX[] items)
         {
-            var settings = items.Select(item => ConvertToDal(item)).ToList();
-            //Parallel.ForEach(items, item =>
-            //{
-            //    T record = ConvertToDal(item);
-            //    lock (settings)
-            //    {
-            //        settings.Add(record);
-            //    }
-            //});
-            Repository.Insert(settings);
+            List<T> results = items.Select(ConvertToDal).ToList();
+            Repository.Insert(results);
         }
 
         public TX Get(int id)
         {
-            var item = Repository.Select(id);
-            var result = ConvertToViewModel(item);
+            //var item = Repository.Select(id);
+            //var result = ConvertToViewModel(item);
+            TX result =  ConvertToViewModel(Repository.Select(id));
             return result;
         }
 
         public List<TX> GetAll()
         {
-            var items = Repository.SelectAll();
-            //Parallel.ForEach(items, item =>
-            //{
-            //    TX result = ConvertToViewModel(item);
-            //    lock (results)
-            //    {
-            //        results.Add(result);
-            //    }
-            //});
-            return items.Select(item => ConvertToViewModel(item)).ToList();
+            IEnumerable<T> items = Repository.SelectAll();
+            List<TX> results = items.Select(ConvertToViewModel).ToList();
+            return results;
         }
+
+       
 
         public List<TX> GetList(params int[] ids)
         {
-            //Parallel.ForEach(ids, id =>
-            //{
-            //    TX item = Get(id);
-            //    lock (results)
-            //    {
-            //        results.Add(item);
-            //    }
-            //});
-            return ids.Select(id => Get(id)).ToList();
+            return ids.Select(Get).ToList();
         }
 
         public void Remove(TX item)
         {
-            var record = ConvertToDal(item);
-            Repository.Delete(record);
+            Repository.Delete(ConvertToDal(item));
         }
 
         public void Remove(params TX[] items)
         {
-            //Parallel.ForEach(items, item =>
-            //{
-            //    T record = ConvertToDal(item);
-            //    lock (Repository)
-            //    {
-            //        Repository.Delete(record);
-            //    }
-            //});
             foreach (var item in items)
             {
-                var record = ConvertToDal(item);
-                Repository.Delete(record);
+                Repository.Delete(ConvertToDal(item));
             }
         }
 
         public void Update(TX item)
         {
-            var record = ConvertToDal(item);
-            Repository.Update(record);
+            Repository.Update(ConvertToDal(item));
         }
 
         public void Update(params TX[] items)
         {
-            var records = items.Select(item => ConvertToDal(item)).ToList();
-            //Parallel.ForEach(items, item =>
-            //{
-            //    T record = ConvertToDal(item);
-            //    lock (records)
-            //    {
-            //        records.Add(record);
-            //    }
-            //});
+            List<T> records = items.Select(ConvertToDal).ToList();
             Repository.Update(records);
         }
 
         public virtual T ConvertToDal(TX viewModel)
         {
-            throw new NotSupportedException("This Method should be overriden in the derived class");
+            throw new NotSupportedException(message: @"This Method should be overriden in the derived class");
         }
 
         public virtual TX ConvertToViewModel(T model)
         {
-            throw new NotSupportedException("This Method should be overriden in the derived class");
+            throw new NotSupportedException(message: @"This Method should be overriden in the derived class");
         }
     }
 }

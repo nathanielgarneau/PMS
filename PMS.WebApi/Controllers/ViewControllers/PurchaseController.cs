@@ -13,6 +13,8 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Create()
         {
+            _viewBagHelper.LocationSelectList(this);
+            _viewBagHelper.ClientSelectList(this);
             return View(new PurchaseViewModel());
         }
 
@@ -30,6 +32,8 @@ namespace PMS.WebApi.Controllers.ViewControllers
 
         public ActionResult Edit(int id)
         {
+            _viewBagHelper.LocationSelectList(this);
+            _viewBagHelper.ClientSelectList(this);
             var item = _businessLayer.Get(id);
             return View(item);
         }
